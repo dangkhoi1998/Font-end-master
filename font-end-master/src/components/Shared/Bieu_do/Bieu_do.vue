@@ -1,9 +1,9 @@
 <template>
   <section id="dashboard">
     <section>
-      <mdb-row class="mt-5">
-          <mdb-col md="9" class="mb-4">
-              <mdb-card style="width:1060px">
+      <mdb-row class="my-0 py-0">
+          <mdb-col md="12" class="mb-4">
+              <mdb-card>
                   <mdb-card-body>
                       <div style="display: block">
                         <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>

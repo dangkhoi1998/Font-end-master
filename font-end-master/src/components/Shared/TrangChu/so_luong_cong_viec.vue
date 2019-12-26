@@ -2,7 +2,7 @@
   <section class="mt-lg-5">
       <mdb-row>
         
-        <mdb-col v-for="item in wordEmp" xl="4" md="6" class="mb-r">
+        <mdb-col v-for="item in wordEmp" xl="4" md="6" class="my-0 py-0">
           <mdb-card cascade class="cascading-admin-card">
             <div class="admin-up">
               <v-icon  :class="item.class" class="far">{{item.icon}}</v-icon>

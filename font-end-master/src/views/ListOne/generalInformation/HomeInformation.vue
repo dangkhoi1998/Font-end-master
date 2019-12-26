@@ -8,7 +8,7 @@
         <list-cong-viec
         :list-api="getworkApi"></list-cong-viec> 
       </v-col>
-      <v-col cols="12" lg="4">
+      <v-col class="my-0 py-0" cols="12" lg="4">
         <app-dsnv
         :text="text"
         :headers="headers"
