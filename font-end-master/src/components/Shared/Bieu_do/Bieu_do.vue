@@ -1,0 +1,45 @@
+<template>
+  <section id="dashboard">
+    <section>
+      <mdb-row class="mt-5">
+          <mdb-col md="9" class="mb-4">
+              <mdb-card style="width:1060px">
+                  <mdb-card-body>
+                      <div style="display: block">
+                        <mdb-bar-chart :data="barChartData" :options="barChartOptions" :height="500"/>
+                      </div>
+                  </mdb-card-body>
+              </mdb-card>
+          </mdb-col>
+      </mdb-row>
+    </section>
+  </section>
+</template>
+<script>
+import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbBarChart } from 'mdbvue'
+
+export default {
+  name: 'Dashboard',
+  components: {
+    mdbRow,
+    mdbCol,
+    mdbCard,
+    mdbCardBody,
+    mdbBarChart,
+  },
+  data: () => ({
+  }),
+  props: {
+    barChartData: {
+      require: true,
+      type: [Object, Array],
+      default: null
+    },
+    barChartOptions: {
+      require: true,
+      type: [Object, Array],
+      default: null
+    }
+  }
+}
+</script>

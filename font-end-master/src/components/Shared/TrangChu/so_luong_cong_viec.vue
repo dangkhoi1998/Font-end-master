@@ -1,28 +1,94 @@
 <template>
-  <div>
-    <v-row>
-      <v-col cols="12" sm="6" lg="4" class="my-0 py-0" v-for="item in material">
-        <material-stats-card
-          :color="item.color"
-          :icon="item.icon"
-          :title="item.title"
-          :value="item.value"/>
-      </v-col>
-    </v-row>
-  </div>
+  <section class="mt-lg-5">
+      <mdb-row>
+        
+        <mdb-col v-for="item in wordEmp" xl="4" md="6" class="mb-r">
+          <mdb-card cascade class="cascading-admin-card">
+            <div class="admin-up">
+              <v-icon  :class="item.class" class="far">{{item.icon}}</v-icon>
+              <div class="data">
+                <p>{{item.title}}</p>
+                <h4>
+                  <strong>{{item.value}}</strong>
+                </h4>
+              </div>
+            </div>
+            <mdb-card-body>
+              <v-progress-linear
+                :color="item.class"
+                height="15"
+                :value="item.value"
+              ></v-progress-linear>
+            </mdb-card-body>
+          </mdb-card>
+        </mdb-col>
+      </mdb-row>
+    </section>
 </template>
+
 <script>
+import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbCardText, mdbIcon, } from 'mdbvue'
   export default {
     data () {
       return {
-      }
+      } 
     },
     props: {
-      material: {
+      wordEmp: {
         require: true,
         type: Array,
         default: null
       },
-    }
+    },
+    components: {
+    mdbRow,
+    mdbCol,
+    mdbCard,
+    mdbCardBody,
+    mdbCardText,
+    mdbIcon,
+    },
   }
 </script>
+<style scoped>
+.cascading-admin-card {
+  margin: 20px 0;
+}
+.cascading-admin-card .admin-up {
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: -20px;
+}
+.cascading-admin-card .admin-up .fas,
+.cascading-admin-card .admin-up .far {
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.2), 0 2px 13px 0 rgba(0, 0, 0, 0.19);
+  padding: 1.7rem;
+  font-size: 2rem;
+  color: #fff;
+  text-align: left;
+  margin-right: 1rem;
+  border-radius: 3px;
+}
+.cascading-admin-card .admin-up .data {
+  float: right;
+  margin-top: 2rem;
+  text-align: right;
+}
+.admin-up .data p {
+  color: #999999;
+  font-size: 12px;
+}
+.classic-admin-card .card-body {
+  color: #fff;
+  margin-bottom: 0;
+  padding: 0.9rem;
+}
+.classic-admin-card .card-body p {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 0;
+}
+.classic-admin-card .card-body h4 {
+  margin-top: 10px;
+}
+</style>
