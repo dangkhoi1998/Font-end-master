@@ -7,36 +7,27 @@
 <script>
 export default {
   data: () => ({
+    params: '$route.params.idEmpl',
     links: [
       {
-        to: "/list-two/trang-chu",
+        to: "/list-two/trang-chu/ ",
         icon: "mdi-view-dashboard",
-        text: "Trang chủ"
+        text: "Trang chủ",
       },
       {
-        to: "/list-two/cong-viec",
+        to: "/list-two/cong-viec/",
         icon: "mdi-account-multiple-check",
         text: "Công việc"
       },
       {
-        to: "/list-two/lich-hop",
-        icon: "mdi-amplifier",
-        text: "Lịch họp/ Sự kiện"
-      },
-      {
-        to: "/list-two/thong-tin-ban-than",
+        to: "/list-two/thong-tin-ban-than/",
         icon: "mdi-account",
-        text: "Thông tin bản thân"
+        text: "Thông tin tài khoản"
       },
       {
-        to: "/list-two/thong-bao",
+        to: "/list-two/thong-bao/",
         icon: "mdi-bell",
         text: "Thông báo"
-      },
-      {
-        to: "/list-two/list",
-        icon: "mdi-bell",
-        text: "Bài thi cuôi kỳ"
       },
     ]
   }),

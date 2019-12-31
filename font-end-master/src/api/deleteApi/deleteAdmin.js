@@ -27,3 +27,10 @@ export function DeleteEmployee (item) {
     method: 'delete',
   })
 }
+
+export function DeleteDepartment (item) {
+  return request({
+    url: `Employees/department/${item.idDepartment}`,
+    method: 'delete',
+  })
+}

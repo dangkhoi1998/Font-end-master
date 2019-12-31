@@ -23,6 +23,7 @@
     <v-divider class="mx-3 mb-3" />
 
     <v-list>
+      
       <template v-for="item in links">
         <v-list-group
           v-if="item.items"
@@ -44,20 +45,18 @@
               :to="subitem.to"
             > 
               <v-list-item-title>{{subitem.title}}</v-list-item-title>
-              <!-- <v-list-title-content>
-                <v-list-title-title v-text="subitem.title"></v-list-title-title>
-              </v-list-title-content> -->
             </v-list-item>
         </v-list-group>
+        
         <v-list-item 
           v-else
-          :to="item.to"
+          :to="item.to +$route.params.idEmpl"
           active-class="primary white--text"
           style="text-decoration:none">
           <v-list-item-icon>
             <v-icon>{{item.icon}}</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>{{item.text}}</v-list-item-title>
+          <v-list-item-title> {{item.text}}</v-list-item-title>
         </v-list-item>
       </template>
     </v-list>

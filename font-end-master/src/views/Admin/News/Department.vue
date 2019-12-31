@@ -3,6 +3,8 @@
     <app-simple-data
     :textBtn="text"
     :getApi="getDepartmentApi"
+    :postApi="PostDepartment"
+    :delete-api="DeleteDepartment"
     :headers="headers">
       <template v-slot:formDepartment="{ item }" >
         <v-form >
@@ -10,7 +12,7 @@
               <v-container>
                 <v-row>
                   <v-col cols="12" class="py-0">
-                    <v-text-field v-model="item.department_name" label="Tên phòng ban" outlined required></v-text-field>
+                    <v-text-field v-model="item.departmentName" label="Tên phòng ban" outlined required></v-text-field>
                   </v-col>
                   <v-col cols="12" class="py-0">
                     <v-text-field v-model="item.id_department" label="Mã phòng ban" outlined required></v-text-field>
@@ -25,15 +27,18 @@
 </template>
 <script>
 import simpleData from '../../../components/Shared/TrangChu/simpleData'
-import {getDepartmentApi} from '../../../api/getApi'
+import {getDepartmentApi} from '../../../api/GetApi/getApiAdmin'
+import { PostDepartment } from '../../../api/PostApi/PostAdmin'
+import { DeleteDepartment } from '../../../api/deleteApi/deleteAdmin'
 export default {
   data: () => ({
     text: 'Phòng ban',
     getDepartmentApi,
+    PostDepartment,
+    DeleteDepartment,
     headers: [
-      { text: 'STT', value: 'stt', align: 'left'},
-      { text: 'Mã phòng ban', value: 'id_department', align: 'left'},
-      { text: 'Phòng ban', value: 'department_name', align: 'left'},
+      { text: 'Mã phòng ban', value: 'idDepartment', align: 'left'},
+      { text: 'Phòng ban', value: 'departmentName', align: 'left'},
       { text: 'Actions', value: 'actions', align: 'left'},
     ],
   }),

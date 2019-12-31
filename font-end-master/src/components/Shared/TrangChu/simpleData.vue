@@ -21,7 +21,7 @@
         >
           <template v-slot:item.actions="{item}">
               <v-icon small class="mr-2" @click="editItem(item)" >edit</v-icon>
-              <v-icon small @click="deleteItem(item)" > delete </v-icon>
+              <v-icon small @click="deleteItem(item)" > delete  </v-icon>
           </template>
         </v-data-table>
       </material-card>
@@ -59,8 +59,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{ items.id_department}}</td>
-                  <td>{{ items.department_name}}</td>
+                  <td>{{ items.idDepartment}}</td>
+                  <td>{{ items.departmentName}}</td>
                 </tr>
               </tbody>
             </template>
@@ -79,8 +79,6 @@
 </template>
 
 <script>
-  import api from '../../../api/http'
-  import {getDepartmentApi} from '../../../api/getApi'
   export default {
     data () {
       return {
@@ -99,6 +97,16 @@
         default: null
       },
       getApi: {
+        require: true,
+        type: Function,
+        default: null
+      },
+      postApi: {
+        require: true,
+        type: Function,
+        default: null
+      },
+      deleteApi: {
         require: true,
         type: Function,
         default: null
@@ -127,11 +135,7 @@
         this.item = {}
       },
       AddDepartment () {
-        api
-        .post('department', {
-          department_name: this.item.department_name,
-          id_department: this.item.id_department
-        })
+        this.postApi(this.item)
           .then(response => {
             console.log(response)
           })
@@ -167,14 +171,13 @@
         this.dialog1 = true
       },
       Delete (item) {
-        api
-          .delete('department/' + this.items.id)
-            .then(response => {
-              console.log(response)
-            })
-            .catch(error => {
-              console.log(error)
-            })
+        this.deleteApi(this.items)
+          .then(response => {
+            console.log(response)
+          })
+          .catch(error => {
+            console.log(error)
+          })
         const index = this.desserts.indexOf(item)
         this.desserts.splice(index, 1)
         this.dialog1 = false

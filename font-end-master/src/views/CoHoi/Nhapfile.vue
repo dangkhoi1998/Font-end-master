@@ -65,7 +65,7 @@
     },
     methods: {
       submit () {
-        axios.post('https://database-9a825.firebaseio.com/api.json', this.desserts)
+        axios.post('http://localhost:3000/work', this.desserts)
         console.log('ddddddđ', this.desserts)
         .catch(function (error) {
           console.log(error)

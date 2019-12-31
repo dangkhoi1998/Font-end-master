@@ -48,7 +48,7 @@
         :headers="headers"
         :items="desserts"
         :expanded.sync="expanded"
-        item-key="id"
+        item-key="idEmpl"
         show-expand
         :search="search"
         no-data-text="Không có dữ liệu"
@@ -61,15 +61,22 @@
               <v-col cols="12" sm="5" class="my-0 py-0">
                 <app-comment
                 @commentAdd="commentAdd=$event"
-                :editCommet="editCommet"></app-comment>
+                :editCommet="editCommet"
+                @Edit="editCommet=$event"></app-comment>
               </v-col>
+          
               <v-col cols="12" sm="7">
                 <list-comment
                 :commentAdd="commentAdd"
+                :listComment="item.commCollection"
                 @editCommet="editCommet=$event"></list-comment>
               </v-col>
             </v-row>
           </td>
+        </template>
+
+        <template v-slot:item.iddepartment="{item}">
+          {{item.idDepartment.departmentName}}
         </template>
 
         <template v-slot:item.stt="{item}">
@@ -104,7 +111,7 @@
             <v-card-actions>
               <div class="flex-grow-1"></div>
               <v-btn color="blue darken-1"  @click="dialog=false" ><span style="color: white;">Thoát</span></v-btn>
-              <v-btn color="green" v-if="addUpdate" :disabled="!form" :loading="isUpdating" ><span style="color: white;" @click="saveItem()">Lưu lại</span></v-btn>
+              <v-btn color="green" v-if="addUpdate"  :loading="isUpdating" ><span style="color: white;" @click="saveItem()">Lưu lại</span></v-btn>
               <v-btn color="orange" v-else ><span style="color: white;" @click="updateItem()">Sửa</span></v-btn>
             </v-card-actions>
         </material-card>
@@ -175,11 +182,12 @@
   import { UpdateEmployee } from '../../../api/updateApi/updateAdmin'
   import { DeleteEmployee } from '../../../api/deleteApi/deleteAdmin'
   import { getComment } from  '../../../api/GetApi/getApiAdmin'
+  import axios from 'axios'
   export default {
     data () {
       return {
         expanded: [],
-        form: false,
+        form: true,
         search: '',
         singleExpand: false,
         item: {},
@@ -242,7 +250,22 @@
 
       saveItem () {
         PostEmployee(this.item)
+        // axios.post('http://localhost:8081/Employees', {
+          
+     
+        // "levell": "truong phong",
+        // "nameEmpl": "Nghĩa đẹp trai bao",
+        // "phoneNum": 16333333,
+        // "email": "abc@gmail.com",
+        // "stt": "false",
+        // "addresss": "11/11 ABC",
+        // "dateOfBirth": "3/5/1998",
+        // "userr": "222",
+        // "pass": "344",
+        // "idDepartment": "2"
+        // })
         .then(response => {
+          console.log(response)
         })
         .catch(function (error) {
           console.log(error)

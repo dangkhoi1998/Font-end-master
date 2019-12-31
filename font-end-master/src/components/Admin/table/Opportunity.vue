@@ -94,13 +94,13 @@
           :headers="headers"
           :items="desserts"
           :expanded.sync="expanded"
-          item-key="id"
+          item-key="idOpportunity"
           show-expand
           :search="search"
           class="elevation-1 mt-5"
         >
           <template v-slot:expanded-item="{item}">
-            <td :colspan="12">
+            <td :colspan="14">
               <v-row row class="my-0 py-0">
                 <v-col cols="12" sm="5" class="my-0 py-0">
                   <app-comment
@@ -110,6 +110,7 @@
                 <v-col cols="12" sm="7">
                   <list-comment
                   :commentAdd="commentAdd"
+                  :listComment="item.commCollection"
                   @editCommet="editCommet=$event"></list-comment>
                 </v-col>
               </v-row>

@@ -32,8 +32,15 @@ export function PostOpportunityApi (item) {
 export function PostEmployee (item) {
   return request({
     method: 'post',
-    url: 'employee',
-    data: (item),
+    url: 'Employees',
+    data: (item)
   })
 }
 
+export function PostDepartment (item) {
+  return request({
+    method: 'post',
+    url: 'Employees/department',
+    data: (item)
+  })
+}

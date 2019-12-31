@@ -1,10 +1,9 @@
 <template>
   <v-container fluid>
     <so-luong-cong-viec
-    :material="material"></so-luong-cong-viec>
+    :wordEmp="wordEmp"></so-luong-cong-viec>
     <v-row>
       <v-col cols="12" lg="8">
-        <bieu-cot></bieu-cot>
         <list-cong-viec
         :list-api="getworkApi"></list-cong-viec> 
       </v-col>
@@ -33,24 +32,24 @@ export default {
     DeleteWorkToDoApi,
     UpdatetWorkToDo,
     getworkApi,
-    material: [
+    wordEmp:[
       {
-        title: 'Tổng số lượng công việc trong năm',
-        icon: 'mdi-store',
-        color: 'green',
-        value: '50$'
+        title:'Công việc theo tuần',
+        icon:'mdi-finance',
+        value:'50',
+        class:'warning',
       },
       {
-        title: 'Công việc trong tháng',
-        icon: 'mdi-content-copy',
-        color: 'orange',
-        value: '50$'
+        title:'Công việc theo tháng',
+        icon:'mdi-chart-pie',
+        value:'70',
+        class:'light-blue lighten-1',
       },
       {
-        title: 'Công việc trong tuần',
-        icon: 'mdi-information-outline',
-        color: 'red',
-        value: '50$'
+        title:'Công việc theo tuần',
+        icon:'mdi-chart-bar',
+        value:'60',
+        class:'red accent-2',
       }
     ],
     locationData: [
@@ -81,6 +80,7 @@ export default {
     listCongViec: () => import ('../../../components/Shared/TrangChu/List_cong_viec'),
     viecCanLam: () => import ('../../../components/Shared/TrangChu/viec_can_lam'),
     trangThai: () => import ('../../../components/Shared/Bieu_do/Trang_thai'),
+    bieuDo: () => import ('../../../components/Shared/Bieu_do/Bieu_do')
   },
 }
 </script>

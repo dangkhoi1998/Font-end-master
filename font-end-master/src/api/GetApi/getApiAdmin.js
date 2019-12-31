@@ -2,14 +2,14 @@ import request from '../../util/request'
 
 export function getOpportunityApi () {
   return request({
-    url: 'Opportunity',
+    url: 'Employees/admin/opportunity',
     method: 'get',
   })
 }
 
-export function getemployee () {
+export function getemployee (id) {
   return request({
-    url: 'employee',
+    url: 'Employees/admin/nhanvien',
     method: 'get',
   })
 }
@@ -24,6 +24,13 @@ export function getComment () {
 export function getworkApi () {
   return request({
     url: 'work',
+    method: 'get',
+  })
+}
+
+export function getDepartmentApi () {
+  return request({
+    url: 'Employees/department',
     method: 'get',
   })
 }

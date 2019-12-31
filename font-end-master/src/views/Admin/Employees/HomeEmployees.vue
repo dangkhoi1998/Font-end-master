@@ -4,16 +4,16 @@
     <div v-if="!isLoading">
       <app-employees
       :headers="headers"
-      :list-api="getEmployeeApi"
+      :list-api="getemployee"
       :update-api="updateEmployeeApi">
         <template v-slot:formEmployees="{ item }" >
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="6" class="py-0">
-                <v-text-field v-model="item.name_empl" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Họ và tên" outlined required></v-text-field>
+                <v-text-field v-model="item.nameEmpl" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Họ và tên" outlined required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="6" class="py-0">
-                <v-text-field v-model="item.phone_num" :rules="phone" label="Số điện thoại" outlined required></v-text-field>
+                <v-text-field v-model="item.phoneNum" :rules="phone" label="Số điện thoại" outlined required></v-text-field>
               </v-col>
               <v-col cols="12"  sm="6" md="6"  class="py-0">
                 <v-text-field v-model="item.addresss" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Địa chỉ" outlined required></v-text-field>
@@ -22,13 +22,13 @@
                 <v-text-field v-model="item.email" label="Email" :rules="[v => !!v || 'Thông tin bắt buộc ', v => /.+@gmail.+/.test(v)  || 'Bạn nhập sai email']" outlined required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="6" class="py-0">
-                <datetime-picker :lableName="`Năm sinh`" v-model="item.date_of_birth" @date="item.date_of_birth=$event"></datetime-picker>
+                <datetime-picker :lableName="`Năm sinh`" v-model="item.dateOfBirth" @date="item.dateOfBirth=$event"></datetime-picker>
               </v-col>
               <v-col cols="12" sm="6" md="6" class="py-0">
-                <v-combobox v-model="item.level" height="30" :items="items" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" outlined  label="Chức vụ"></v-combobox>
+                <v-combobox v-model="item.levell" height="30" :items="items" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" outlined  label="Chức vụ"></v-combobox>
               </v-col>
               <v-col cols="12" sm="6" md="6" class="py-0">
-                <v-combobox v-model="item.id_department" :items="department_name" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Phòng ban" outlined required></v-combobox>
+                <v-combobox v-model="item.idDepartment" :items="idDepartment" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Phòng ban" outlined required></v-combobox>
               </v-col>
               <v-col cols="12" sm="6" md="6" class="py-0">
                 <v-combobox v-model="item.userr"  :items="department_name" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Tên đăng nhập" outlined required></v-combobox>
@@ -49,7 +49,7 @@
 
 <script>
   import Employees from '../../../components/Admin/table/Employees'
-  import { getEmployeeApi, updateEmployeeApi } from '../../../api/Employees'
+  import { getemployee, updateEmployeeApi } from '../../../api/GetApi/getApiAdmin'
   import { getDepartmentApi } from '../../../api/getApi'
   import { loading } from '../../../mixins/loading.mixin'
   export default {
@@ -57,7 +57,7 @@
     data() {
       return {
         show1: false,
-        getEmployeeApi,
+        getemployee,
         updateEmployeeApi,
         rules: {
           email: v => (v || '').match(/@/) || 'Please enter a valid email',
@@ -66,17 +66,18 @@
             'Mật khẩu phải chứa chữ in hoa, ký tự số và ký tự đặc biệt',
           required: v => !!v || 'This field is required',
         },
-        stt: ['Đang hoạt động', 'Tạm ngừng hoạt động', 'Ngừng hoạt động'],
-        items: ['Trưởng phòng', 'Nhân viên'],
+        stt: ['false', 'true'],
+        items: ['truong phong', 'nhan vien'],
         department_name: [],
+        idDepartment: ['1', '2', '3'],
         headers: [
-          { text: 'Họ và Tên', align: 'left', value: 'name_empl' },
-          { text: 'Số điện thoại', align: 'left', value: 'phone_num' },
+          { text: 'Họ và Tên', align: 'left', value: 'nameEmpl' },
+          { text: 'Số điện thoại', align: 'left', value: 'phoneNum' },
           { text: 'Địa chỉ', align: 'left', value: 'addresss' },
-          { text: 'Ngày tháng', align: 'left', value: 'date_of_birth' },
+          { text: 'Ngày tháng', align: 'left', value: 'dateOfBirth' },
           { text: 'Email', align: 'left', value: 'email' },
-          { text: 'Chức vụ', align: 'left', value: 'level' },
-          { text: 'Phòng ban', align: 'left', value: 'id_department' },
+          { text: 'Chức vụ', align: 'left', value: 'levell' },
+          { text: 'Phòng ban', align: 'left', value: 'iddepartment' },
           { text: 'Trạng thái', align: 'left', value: 'stt' },
           { text: 'Actions', align: 'left', value: 'actions' },
         ],

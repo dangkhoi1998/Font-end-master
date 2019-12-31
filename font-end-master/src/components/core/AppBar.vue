@@ -1,10 +1,10 @@
 <template>
   <v-app-bar id="core-app-bar" absolute app color="#f5f5f5" flat height="" >
     <v-toolbar-title class="tertiary--text font-weight-light align-self-center">
-      <v-btn v-if="responsive" dark icon @click.stop="onClick">
-        <v-icon>mdi-view-list</v-icon>
+      <v-btn icon @click.stop="onClick">
+        <v-icon size="30" color="tertiary">mdi-view-list</v-icon>
       </v-btn>
-      <v-chip color="red">{{ title }}</v-chip>
+      <span class="mt-2">{{ title }}</span>
     </v-toolbar-title>
 
     <v-spacer />

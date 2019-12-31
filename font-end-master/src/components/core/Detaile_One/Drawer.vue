@@ -26,7 +26,7 @@ export default {
       {
         to: "/list-one/thong-tin-ban-than",
         icon: "mdi-account",
-        text: "Thông tin bản thân"
+        text: "Thông tin tài khoản"
       },
       {
         to: "/list-one/thong-bao",

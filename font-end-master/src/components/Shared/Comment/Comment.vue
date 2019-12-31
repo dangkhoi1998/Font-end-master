@@ -64,7 +64,8 @@
           </v-col>
 
           <v-col cols="12" sm="6" class="my-0 py-0">
-            <v-btn :disabled="!form" style="width:100%;" color="primary"  @click="SaveCommnet()">Lưu lại</v-btn>
+            <v-btn :disabled="!form" color="primary"  @click="SaveCommnet()">Lưu lại</v-btn>
+            <v-btn :disabled="!form" color="primary"  @click="EditCommnet()">Sửa</v-btn>
           </v-col>
         </v-row>
       </v-form>
@@ -91,6 +92,10 @@ export default {
       this.$emit('commentAdd', this.comment)
       this.comment = {}
     },
+    EditCommnet () {
+      console.log('1111', this.comment)
+      this.$emit('Edit', this.comment)
+    }
   },
   computed: {
     contact_time () {

@@ -2,7 +2,7 @@ import request from '../../util/request'
 
 export function getTaskApi () {
   return request({
-    url: '/Opportunity',
+    url: 'Employees/8/opportunity',
     method: 'get',
   })
 }

@@ -5,16 +5,14 @@
 </template>
 
 <script>
+import { getLogin } from './api/Login/Getlogin'
+import axios from 'axios'
 export default {
   name: 'App',
   data () {
     return {
       authenticated: true,
-      mockAccount: [
-        { username: '1', password: '1', level1: '1' },
-        { username: '2', password: '1', level2: '2' },
-        { username: '3', password: '1', level3: '3' },
-      ]
+      mockAccount: []
     }
   },
   mounted () {
@@ -22,12 +20,22 @@ export default {
       this.$router.replace({ name: 'login' })
     }
   },
+  created () {
+    this.getlogin()
+  },
   methods: {
     setAuthenticated (status) {
       this.authenticated = status
     },
     logout () {
       this.authenticated = false
+    },
+    getlogin () {
+      getLogin()
+       .then(response => {
+         console.log('dđsss', response.data)
+         this.mockAccount = response.data
+       })
     }
   },
 }

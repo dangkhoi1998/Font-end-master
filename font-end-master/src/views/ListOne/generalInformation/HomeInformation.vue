@@ -5,14 +5,19 @@
     <v-row>
       <v-col cols="12" lg="8">
         <bieu-do :barChartData="barChartData" :barChartOptions="barChartOptions" ></bieu-do>
+
         <list-cong-viec
         :list-api="getworkApi"></list-cong-viec> 
       </v-col>
-      <v-col cols="12" lg="4">
+      <v-col cols="12" sm="4">
+        <trang-thai
+        :locationData="locationData"></trang-thai>
+
         <app-dsnv
         :text="text"
         :headers="headers"
         :get-api="getRevenueApi"></app-dsnv>
+
         <viec-can-lam
         :list-api="getworToDokApi"
         :post-api="PostWorkToDo"
@@ -41,6 +46,29 @@
         headers: [
           { text: 'Họ và tên', value: 'name_empl', align: 'left'},
           { text: 'Doanh thu', value: 'doanhthu', align: 'left'},
+        ],
+        
+        locationData: [
+          {
+            value: 25,
+            name: "Chưa liên hệ được"
+          },
+          {
+            value: 35,
+            name: "Đã đăng ký"
+          },
+          {
+            value: 25,
+            name: "Đang tham khảo"
+          },
+          {
+            value: 25,
+            name: "Hẹn gọi lại sau"
+          },
+          {
+            value: 10,
+            name: "Không có nhu cầu"
+          }
         ],
         wordEmp:[
           {
@@ -81,7 +109,7 @@
             backgroundColor: 'rgba(245, 192, 50, 0.5)',
             borderWidth: 1
           }
-        ]
+        ],
       },
       barChartOptions: {
         responsive: true,
@@ -105,34 +133,15 @@
           }]
         }
       },
-        material: [
-          {
-            title: 'Tổng số lượng công việc trong năm',
-            icon: 'mdi-store',
-            color: 'green',
-            value: '50$'
-          },
-          {
-            title: 'Công việc trong tháng',
-            icon: 'mdi-content-copy',
-            color: 'orange',
-            value: '50$'
-          },
-          {
-            title: 'Công việc trong tuần',
-            icon: 'mdi-information-outline',
-            color: 'red',
-            value: '50$'
-          }
-        ],
-      }
-    },
+    }
+  },
     components: {
       soLuongCongViec: () => import ('../../../components/Shared/TrangChu/so_luong_cong_viec'),
       listCongViec: () => import ('../../../components/Shared/TrangChu/List_cong_viec'),
       appDsnv: () => import('../../../components/Shared/TrangChu/simpleData'),
       viecCanLam: () => import ('../../../components/Shared/TrangChu/viec_can_lam'),
-      bieuDo: () => import ('../../../components/Shared/Bieu_do/Bieu_do')
+      bieuDo: () => import ('../../../components/Shared/Bieu_do/Bieu_do'),
+      trangThai: () => import ('../../../components/Shared/Bieu_do/Trang_thai'),
     },
   }
 </script>

@@ -429,17 +429,7 @@
     {
       "commets": "Cung cấp giấy ",
       "date": "2019-12-04",
-      "id": 1
-    },
-    {
-      "commets": "Cung cấp giấy ",
-      "date": "2019-12-04",
       "id": 3
-    },
-    {
-      "commets": "Ngày mai đi gặp thành chính",
-      "date": "2019-12-04",
-      "id": 4
     },
     {
       "commets": "Cung cấp giấy chứng nhận cho nghĩa\n",
@@ -447,9 +437,54 @@
       "id": 5
     },
     {
-      "commets": "sdasdas",
-      "dateTime": "2019-12-18",
-      "id": 6
+      "commets": "Cung cấp giấy cho khởi my",
+      "date": "2019-12-26",
+      "id": 7
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 8
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 9
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 10
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 11
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 12
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 13
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 14
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 15
+    },
+    {
+      "commets": "vgd",
+      "dateTime": "2019-12-31",
+      "id": 16
     }
   ],
   "Omninchannel": [
@@ -468,7 +503,7 @@
       "email": "dá@gmail.com",
       "user": "dfsdaf",
       "pass": "Khoi123456@",
-      "stt": "Tạm ngừng hoạt động",
+      "stt": "Đang hoạt động",
       "id": 4
     },
     {
@@ -548,21 +583,6 @@
       "id": 2
     },
     {
-      "work_name": "Mai sếp đi tán gái ",
-      "id_department": [
-        "Phòng Nhân Sự",
-        "Phòng giải pháp"
-      ],
-      "id_empl": [
-        "Doanh nhân hảo",
-        "MR.Nam"
-      ],
-      "prioritize": "Trung bình",
-      "noidung": "Ae cùng được nghỉ",
-      "date": "2019-11-22",
-      "id": 3
-    },
-    {
       "work_name": "0876543",
       "id_empl": [
         "Doanh nhân hảo",
@@ -573,6 +593,15 @@
       "noidung": "45435435",
       "date": "2019-12-10",
       "id": 4
+    },
+    {
+      "work_name": "ádasd",
+      "id_department": [
+        "ádasd"
+      ],
+      "prioritize": "Khẩn cấp",
+      "date": "2019-12-26",
+      "id": 5
     }
   ],
   "Opportunity": [
@@ -618,10 +647,6 @@
       "source": "12312321312",
       "status": "Tạm ngừng hoạt động",
       "id": 5
-    },
-    {
-      "date_of_purchase": "25/12/2019",
-      "id": 6
     }
   ],
   "employee": [
@@ -630,7 +655,7 @@
       "email": "765@gmail.com",
       "phone_num": "09876",
       "addresss": "9876",
-      "date_of_birth": "19/12/2019",
+      "date_of_birth": "27/12/2019",
       "level": "Trưởng phòng",
       "id_department": "Phòng giải pháp",
       "pass": "09876543",
@@ -673,22 +698,32 @@
       "stt": "Đang hoạt động",
       "pass": "Khoi12233@",
       "id": 9
+    },
+    {
+      "name_empl": "dsfsafdsf",
+      "phone_num": "dsfsdf",
+      "addresss": "dfdsfsdf",
+      "date_of_birth": "đá",
+      "email": "fdsdf@gmail",
+      "userr": "sadasdsadas",
+      "pass": "sadasd",
+      "stt": "Chờ xét duyệt",
+      "id": 10
     }
   ],
   "comment": [
     {
-      "appointment_time": "02/12/2019",
-      "note": "Cung cấp giấy cho khởi my",
-      "contact_time": "02h:00",
-      "icon": "mdi-bell",
-      "id": 10
+      "appointment_time": "26/12/2019",
+      "contact_time": "06h:00",
+      "note": "Cấp lại giấy phép",
+      "icon": "mdi-email",
+      "id": 1
     },
     {
-      "appointment_time": "26/12/2019",
-      "note": "xcfdsfds",
+      "appointment_time": "04/12/2019",
       "contact_time": "02h:00",
-      "icon": "mdi-bell",
-      "id": 11
+      "note": "sd",
+      "id": 2
     }
   ]
 }

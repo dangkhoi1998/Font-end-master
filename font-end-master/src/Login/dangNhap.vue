@@ -29,7 +29,7 @@ x<template>
                 class="pa-4 pt-6"
               >
                 <v-text-field
-                  v-model="input.username"
+                  v-model="input.userr"
                   placeholder="Email / Số điện thoại/ Tên đăng nhập"
                   :rules="[v => !!v || 'Thông tin bắt buộc ']"
                   color="deep-purple"
@@ -39,7 +39,7 @@ x<template>
                   style="min-height: 96px"
                 ></v-text-field>
                 <v-text-field
-                  v-model="input.password"
+                  v-model="input.pass"
                   :rules="[v => !!v || 'Thông tin bắt buộc ']"
                   required
                   outlined
@@ -106,20 +106,11 @@ export default {
       text: '',
       isUpdating: false,
       form: false,
-      level: { level1: '1', level2: '2', level3: '3', level4: '4'},
-      input: {
-        username: '',
-        password: '',
-      },
+      input: { userr: '', pass: '' },
+      level: { level3: 'nhan vien', level2: 'truong phong', level1: 'admin'},
       name: '',
       email: '',
       select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-      ],
       checkbox: false,
       dialog: false,
       snackbar: false,
@@ -132,29 +123,29 @@ export default {
   methods: {
     login() {
       this.snackbar1=true
-      if (this.input.username !== '' && this.input.password !== '' && this.level.level1 !== '' && this.level.level2 !== '' ) {
+      if (this.input.userr !== '' && this.input.pass !== '' && this.level.level1 != '' && this.level.level2 != '' && this.level.level3 != '') {
         for (const i in this.$parent.mockAccount) {
           if (
-            this.input.username === this.$parent.mockAccount[i].username &&
-            this.input.password === this.$parent.mockAccount[i].password &&
-            this.level.level1 === this.$parent.mockAccount[i].level1
+            this.input.userr === this.$parent.mockAccount[i].userr &&
+            this.input.pass === this.$parent.mockAccount[i].pass &&
+            this.level.level1 === this.$parent.mockAccount[i].levell
           ) {
             this.$emit('authenticated', true)
-            this.$router.push('admin/ban-tin')
+            this.$router.push('admin/ban-tin/' + this.$parent.mockAccount[i].idEmpl)
           } else if (
-            this.input.username === this.$parent.mockAccount[i].username &&
-            this.input.password === this.$parent.mockAccount[i].password &&
-            this.level.level2 === this.$parent.mockAccount[i].level2
+            this.input.userr === this.$parent.mockAccount[i].userr &&
+            this.input.pass === this.$parent.mockAccount[i].pass &&
+            this.level.level2 === this.$parent.mockAccount[i].levell
           ) {
             this.$emit('authenticated', true)
-            this.$router.push('/list-one/trang-chu')
+            this.$router.push('/list-one/trang-chu/' + this.$parent.mockAccount[i].idEmpl)
           } else if (
-            this.input.username === this.$parent.mockAccount[i].username &&
-            this.input.password === this.$parent.mockAccount[i].password &&
-            this.level.level3 === this.$parent.mockAccount[i].level3
+            this.input.userr === this.$parent.mockAccount[i].userr &&
+            this.input.pass === this.$parent.mockAccount[i].pass &&
+            this.level.level3 === this.$parent.mockAccount[i].levell
           ) {
             this.$emit('authenticated', true)
-            this.$router.push('/list-two/trang-chu')
+            this.$router.push('/list-two/trang-chu/' + this.$parent.mockAccount[i].idEmpl)
           } else {
             this.text= 'Bạn nhập sai tài khoản hoặc mật khẩu'
           }
@@ -167,7 +158,7 @@ export default {
   watch: {
     isUpdating (val) {
       if (val) {
-        setTimeout(() => (this.login(), this.isUpdating = false), 3000)
+        setTimeout(() => (this.login(), this.isUpdating = false), 1000)
       }
     },
   },
