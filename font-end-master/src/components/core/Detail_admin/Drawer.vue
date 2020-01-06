@@ -12,6 +12,7 @@ export default {
         to: "/ban-tin/",
         icon: "mdi-view-dashboard",
         text: "Bản tin",
+        levell: "/admin/"
       },
       {
         to: "/co-hoi/",

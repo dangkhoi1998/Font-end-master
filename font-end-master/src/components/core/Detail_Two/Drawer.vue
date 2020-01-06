@@ -12,25 +12,25 @@ export default {
         to: "/trang-chu",
         icon: "mdi-view-dashboard",
         text: "Trang chủ",
-        levell: "/list-two/"
+        levell: "/nhan-vien/"
       },
       {
         to: "/cong-viec",
         icon: "mdi-account-multiple-check",
         text: "Công việc",
-        levell: "/list-two/"
+        levell: "/nhan-vien/"
       },
       {
         to: "/thong-tin-ban-than",
         icon: "mdi-account",
         text: "Thông tin tài khoản",
-        levell: "/list-two/"
+        levell: "/nhan-vien/"
       },
       {
         to: "/thong-bao",
         icon: "mdi-bell",
         text: "Thông báo",
-        levell: "/list-two/"
+        levell: "/nhan-vien/"
       },
     ]
   }),

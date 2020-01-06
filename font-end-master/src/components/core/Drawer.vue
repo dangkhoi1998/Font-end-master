@@ -50,7 +50,7 @@
         
         <v-list-item 
           v-else
-          :to=" '/' + $route.params.levell + item.to"
+          :to=" item.levell + $route.params.idEmpl + item.to"
           active-class="primary white--text"
           style="text-decoration:none">
           <v-list-item-icon>

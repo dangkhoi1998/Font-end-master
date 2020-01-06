@@ -148,8 +148,8 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{ item.name_empl }}</td>
-                  <td>{{ item.phone_num }}</td>
+                  <td>{{ item.nameEmpl }}</td>
+                  <td>{{ item.phoneNum }}</td>
                   <td>{{ item.email }}</td>
                 </tr>
               </tbody>
@@ -180,7 +180,7 @@
 <script>
   import { PostEmployee } from '../../../api/PostApi/PostAdmin'
   import { UpdateNhanvien } from '../../../api/updateApi/updateAdmin'
-  import { DeleteEmployee } from '../../../api/deleteApi/deleteAdmin'
+  import { DeleteNhanvien } from '../../../api/deleteApi/deleteAdmin'
   import { getComment } from  '../../../api/GetApi/getApiAdmin'
   import axios from 'axios'
   export default {
@@ -271,7 +271,7 @@
         })
         Object.assign(this.desserts[this.editedIndex], this.item)
         this.snackbar()
-        this.text = 'Sửa thành công!'
+        this.text = 'Sửa thành công !'
         this.dialog = false
       },
 
@@ -281,7 +281,7 @@
       },
 
       Delete () {
-        DeleteEmployee(this.item)
+        DeleteNhanvien(this.item)
         .then(response => {
         })
         .catch(function (error) {

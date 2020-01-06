@@ -29,7 +29,15 @@ export function UpdateKhachhang (item) {
 export function UpdateNhanvien (item) {
   return request({
     method: 'put',
-    url: `admin/nhanvien//${item.idEmpl}`,
+    url: `admin/nhanvien/${item.idEmpl}`,
+    data: (item)
+  })
+}
+
+export function UpdateCohoi (item) {
+  return request({
+    method: 'put',
+    url: `admin/cohoi/${item.idOpportunity}`,
     data: (item)
   })
 }
