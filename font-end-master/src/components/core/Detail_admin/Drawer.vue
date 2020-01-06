@@ -9,44 +9,50 @@ export default {
   data: () => ({
     links: [
       {
-        to: "/admin/ban-tin/",
+        to: "/ban-tin/",
         icon: "mdi-view-dashboard",
-        text: "Bản tin"
+        text: "Bản tin",
       },
       {
-        to: "/admin/co-hoi/",
+        to: "/co-hoi/",
         icon: "mdi-format-font",
-        text: "Cơ hội"
+        text: "Cơ hội",
+        levell: "/admin/"
       },
       {
-        to: "/admin/quan-ly-khach-hang/",
+        to: "/quan-ly-khach-hang/",
         icon: "mdi-account",
-        text: "Quản lý khách hàng"
+        text: "Quản lý khách hàng",
+        levell: "/admin/"
       },
       {
-        to: "/admin/thong-tin-tai-khoan/",
+        to: "/thong-tin-tai-khoan/",
         icon: "mdi-alarm-bell",
-        text: "Thông tin tài khoản"
+        text: "Thông tin tài khoản",
+        levell: "/admin/"
       },
       {
-        to: "/admin/nhan-vien/",
+        to: "/nhan-vien/",
         icon: "mdi-account-group",
-        text: "Nhân viên"
+        text: "Nhân viên",
+        levell: "/admin/"
       },
       {
-        to: "/admin/thong-bao/",
+        to: "/thong-bao/",
         icon: "mdi-bell",
-        text: "Thông báo"
+        text: "Thông báo",
+        levell: "/admin/"
       },
       {
-        to: "/admin/setting/home/",
+        to: "/setting/home/",
         icon: "mdi-settings-transfer-outline",
         text: "Cài đặt",
         items:[
           { title:"Cơ hội", to:"/admin/setting/seting-co-hoi",},
           { title:"Khách hàng",to:"/admin/setting/setting-khach-hang"},
           { title:"Nhân viên",to:'/admin/setting/setting-nhan-vien'}
-        ]
+        ],
+        levell: "/admin/"
       }
     ]
   }),

@@ -2,9 +2,10 @@
   <div>
     <app-simple-data
     :textBtn="text"
-    :getApi="getDepartmentApi"
-    :postApi="PostDepartment"
-    :delete-api="DeleteDepartment"
+    :getApi="getPhongban"
+    :postApi="PostPhongban"
+    :delete-api="DeletePhongban"
+    :update-api="UpdatePhongban"
     :headers="headers">
       <template v-slot:formDepartment="{ item }" >
         <v-form >
@@ -27,15 +28,17 @@
 </template>
 <script>
 import simpleData from '../../../components/Shared/TrangChu/simpleData'
-import {getDepartmentApi} from '../../../api/GetApi/getApiAdmin'
-import { PostDepartment } from '../../../api/PostApi/PostAdmin'
-import { DeleteDepartment } from '../../../api/deleteApi/deleteAdmin'
+import { getPhongban } from '../../../api/GetApi/getApiAdmin'
+import { PostPhongban } from '../../../api/PostApi/PostAdmin'
+import { UpdatePhongban } from '../../../api/updateApi/updateAdmin'
+import { DeletePhongban } from '../../../api/deleteApi/deleteAdmin'
 export default {
   data: () => ({
     text: 'Phòng ban',
-    getDepartmentApi,
-    PostDepartment,
-    DeleteDepartment,
+    getPhongban,
+    PostPhongban,
+    UpdatePhongban,
+    DeletePhongban,
     headers: [
       { text: 'Mã phòng ban', value: 'idDepartment', align: 'left'},
       { text: 'Phòng ban', value: 'departmentName', align: 'left'},

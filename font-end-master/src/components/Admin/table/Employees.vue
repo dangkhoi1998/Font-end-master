@@ -179,7 +179,7 @@
 </template>
 <script>
   import { PostEmployee } from '../../../api/PostApi/PostAdmin'
-  import { UpdateEmployee } from '../../../api/updateApi/updateAdmin'
+  import { UpdateNhanvien } from '../../../api/updateApi/updateAdmin'
   import { DeleteEmployee } from '../../../api/deleteApi/deleteAdmin'
   import { getComment } from  '../../../api/GetApi/getApiAdmin'
   import axios from 'axios'
@@ -250,20 +250,6 @@
 
       saveItem () {
         PostEmployee(this.item)
-        // axios.post('http://localhost:8081/Employees', {
-          
-     
-        // "levell": "truong phong",
-        // "nameEmpl": "Nghĩa đẹp trai bao",
-        // "phoneNum": 16333333,
-        // "email": "abc@gmail.com",
-        // "stt": "false",
-        // "addresss": "11/11 ABC",
-        // "dateOfBirth": "3/5/1998",
-        // "userr": "222",
-        // "pass": "344",
-        // "idDepartment": "2"
-        // })
         .then(response => {
           console.log(response)
         })
@@ -277,7 +263,7 @@
       },
 
       updateItem(){
-        UpdateEmployee(this.item)
+        UpdateNhanvien(this.item)
         .then(response => {
         })
         .catch(function (error) {

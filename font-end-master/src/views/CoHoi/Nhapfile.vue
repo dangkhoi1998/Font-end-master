@@ -10,7 +10,7 @@
 
           <v-row class="my-0 py-0">
             <v-col cols="12" sm="9" class="my-0 py-0">
-              <v-btn class="ma-2 ml-3" to="/admin/co-hoi" tile outlined color="success">
+              <v-btn class="ma-2 ml-3" :to="'/admin/co-hoi/' + $route.params.idEmpl" tile outlined color="success">
                 <v-icon left>mdi-arrow-left-bold-circle</v-icon> Quay lại
               </v-btn>
             </v-col>

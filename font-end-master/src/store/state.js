@@ -1,6 +1,7 @@
 // https://vuex.vuejs.org/en/state.html
 
 export default {
+  authenticated: false,
   phone: [
     v => !!v || 'Thông tin bắng buộc',
     v => (v || '').match(/((096|097|098|032|086|070|079|077|076|078|090|093|089|083|084|085|087|089|091|094|088|034|035|036|037|038|039))+([0-9]).+$/) ||

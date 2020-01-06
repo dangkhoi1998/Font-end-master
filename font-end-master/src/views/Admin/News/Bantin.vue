@@ -18,7 +18,7 @@
         
         <v-col cols="12" lg="4" class="my-0 py-0">
           <app-dsnv
-          :getApi="getRevenueApi"
+          :getApi="getDoanhsonhanvienthang"
           :headers="headers"
           :text="textDoanhSo"></app-dsnv>
 
@@ -36,16 +36,16 @@
 </template>
 
 <script>
-import { getRevenueApi, getworkApi } from '../../../api/getApi'
+import { getworkApi, getDoanhsonhanvienthang } from '../../../api/GetApi/getApiAdmin'
 import { PostOpportunityApi } from '../../../api/PostApi/PostAdmin'
 export default {
   data: () => ({
-    getRevenueApi,
+    getDoanhsonhanvienthang,
     PostOpportunityApi,
     getworkApi,
     headers: [
-      { text: 'Họ và tên', value: 'name_empl', align: 'left'},
-      { text: 'Doanh thu', value: 'doanhthu', align: 'left'},
+      { text: 'Họ và tên', value: 'nameEmpl', align: 'left'},
+      { text: 'Doanh thu', value: 'totalSale', align: 'left'},
     ],
     textDoanhSo: 'Doanh số nhân viên trong tháng'
   }),

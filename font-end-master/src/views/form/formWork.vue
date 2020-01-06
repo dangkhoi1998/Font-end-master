@@ -15,13 +15,13 @@
             <v-container>
                 <v-row>
                   <v-col cols="12"  class="py-0">
-                    <v-text-field v-model="congviec.work_name" label="Tiêu đề công việc" outlined required ></v-text-field>
+                    <v-text-field v-model="congviec.workName" label="Tiêu đề công việc" outlined required ></v-text-field>
                   </v-col>
                   <v-col cols="12"   class="py-0">
-                    <v-combobox v-model="congviec.id_department" :items="department_name" outlined dense label="Phòng ban" multiple chips ></v-combobox>
+                    <v-combobox v-model="congviec.idDepartment" :items="departmentName" outlined dense label="Phòng ban" multiple chips ></v-combobox>
                   </v-col>
                   <v-col cols="12" sm="6" md="8" class="py-0">
-                    <v-combobox v-model="congviec.id_empl" :items="name_empl" outlined dense  label="Người thực hiện" multiple chips ></v-combobox>
+                    <v-combobox v-model="congviec.idEmpl" :items="name_empl" outlined dense  label="Người thực hiện" multiple chips ></v-combobox>
                   </v-col>
                   <v-col cols="12" sm="6" md="4" class="py-0">
                     <v-combobox  v-model="congviec.prioritize" height="30" :items="mucdo" :rules="[v => !!v || 'Thông tin bắt buộc ']" dense  outlined  label="Mức độ ưu tiên" ></v-combobox>
@@ -67,7 +67,7 @@
               <v-icon size="40">arrow_right</v-icon>
               </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>{{item.work_name}}</v-list-item-title>
+              <v-list-item-title>{{item.workName}}</v-list-item-title>
                 <v-list-item-subtitle>
                   {{item.date}}
                 </v-list-item-subtitle>
@@ -83,7 +83,7 @@
     <v-dialog v-model="dialog" width="500">
       <v-card>
         <v-card-title class="headline">Bạn có chắc chẵn xóa thông tin?</v-card-title>
-        <v-card-text>{{congviec.work_name}}</v-card-text>
+        <v-card-text>{{congviec.workName}}</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="green darken-1" text @click="dialog = false">Thoát</v-btn>
@@ -94,15 +94,15 @@
   </v-row>
 </template>
 <script>
-import api from '../../api/http'
-import {getEmployeeApi, getDepartmentApi, getworkApi} from '../../api/getApi'
+import { getCongvec, getPhongban } from '../../api/GetApi/getApiAdmin'
+import { PostCongviec } from '../../api/PostApi/PostAdmin'
 export default {
   data() {
     return {
       dialog: false,
       dialog1: true,
       dialog2: false,
-      department_name: [],
+      departmentName: [],
       name_empl: [],
       mucdo: ['Trung bình', 'Khẩn cấp'],
       congviec: {
@@ -112,30 +112,29 @@ export default {
     }
   },
   created () {
-    this.listEmploee()
-    this.listgetDepartment()
     this.listWork()
+    this.listPhongban()
   },
   methods: {
-    listEmploee () {
-      getEmployeeApi()
-        .then(response => {
-          for(const i in response.data ) {
-            this.name_empl.push(response.data[i]['name_empl'])
-          }
-        })
-    },
-    listgetDepartment () {
-      getDepartmentApi()
+    // listEmploee () {
+    //   getEmployeeApi()
+    //     .then(response => {
+    //       for(const i in response.data ) {
+    //         this.name_empl.push(response.data[i]['name_empl'])
+    //       }
+    //     })
+    // },
+    listPhongban () {
+      getPhongban()
         .then(response => {
           for(const i in response.data) {
-            this.department_name.push(response.data[i]['department_name'])
+            this.departmentName.push(response.data[i]['idDepartment'])
           }
         })
     },
     listWork () {
-      getworkApi()
-        .then(response => {
+      getCongvec ()
+        .then(response=>{
           this.listWorks = response.data
         })
     },
@@ -161,47 +160,40 @@ export default {
       this.$router.push('/admin/ban-tin')
     },
     btnSave () {
+      console.log('Công việc', this.congviec)
       var vm = this
       if (vm.$refs.formCongvien.validate()) {
-        api
-        .post('work', {
-          work_name: vm.congviec.work_name,
-          id_department: vm.congviec.id_department,
-          id_empl: vm.congviec.id_empl,
-          prioritize: vm.congviec.prioritize,
-          noidung: vm.congviec.noidung,
-          date: vm.congviec.date
-        })
+        PostCongviec(vm.congviec)
           .then(response => {
             console.log(response)
           })
           .catch(error => {
             console.log(error)
           })
-        this.$router.push('/admin/ban-tin')
+       // this.$router.push('/admin/ban-tin')
       }
     },
-    Edit () {
-       var vm = this
-      if (vm.$refs.formCongvien.validate()) {
-        api
-        .put('work/' + this.congviec.id, {
-          work_name: vm.congviec.work_name,
-          id_department: vm.congviec.id_department,
-          id_empl: vm.congviec.id_empl,
-          prioritize: vm.congviec.prioritize,
-          noidung: vm.congviec.noidung,
-          date: vm.congviec.date
-        })
-          .then(response => {
-            console.log(response)
-          })
-          .catch(error => {
-            console.log(error)
-          })
-        this.$router.push('/admin/ban-tin')
-      }
-    },
+    // Edit () {
+    //    var vm = this
+    //   if (vm.$refs.formCongvien.validate()) {
+    //     api
+    //     .put('work/' + this.congviec.id, {
+    //       work_name: vm.congviec.work_name,
+    //       id_department: vm.congviec.id_department,
+    //       id_empl: vm.congviec.id_empl,
+    //       prioritize: vm.congviec.prioritize,
+    //       noidung: vm.congviec.noidung,
+    //       date: vm.congviec.date
+    //     })
+    //       .then(response => {
+    //         console.log(response)
+    //       })
+    //       .catch(error => {
+    //         console.log(error)
+    //       })
+    //     this.$router.push('/admin/ban-tin')
+    //   }
+    // },
     btnThoat () {
       this.$router.push('/admin/ban-tin')
     },

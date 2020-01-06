@@ -7,7 +7,7 @@
           enter-class=""
           enter-active-class="animated fadeInRightBig delay-1s">
           <v-card class="elevation-2 ">
-              <v-card-title  class="headline">Họ và tên: {{item.name_empl}}</v-card-title>
+              <v-card-title  class="headline">Họ và tên: {{item.nameEmpl}}</v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
@@ -17,7 +17,7 @@
           enter-class=""
           enter-active-class="animated fadeInLeftBig delay-2s faster">
         <v-card class="elevation-2">
-          <v-card-title class="headline">Số điện thoại: {{item.phone_num}}</v-card-title>
+          <v-card-title class="headline">Số điện thoại: {{item.phoneNum}}</v-card-title>
         </v-card>
         </transition>
       </v-timeline-item>
@@ -37,7 +37,7 @@
         enter-class=""
         enter-active-class="animated fadeInLeftBig delay-3s faster">
           <v-card class="elevation-2">
-            <v-card-title class="headline">Ngày sinh:  {{item.date_of_birth}} </v-card-title>
+            <v-card-title class="headline">Ngày sinh:  {{item.dateOfBirth}} </v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
@@ -57,17 +57,17 @@
         enter-class=""
         enter-active-class="animated fadeInLeftBig delay-4s faster">
           <v-card class="elevation-2">
-            <v-card-title class="headline">Chức vụ:  {{item.level}} </v-card-title>
+            <v-card-title class="headline">Chức vụ:  {{item.levell}} </v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
-      <v-timeline-item fillDot icon="assignment_ind">
+      <v-timeline-item fillDot icon="assignment_ind" v-if="item.idDepartment">
          <transition
           appear
           enter-class=""
           enter-active-class="animated fadeInRightBig delay-4s">
             <v-card class="elevation-2">
-              <v-card-title class="headline">Phòng Ban:  {{item.id_department}} </v-card-title>
+              <v-card-title class="headline">Phòng Ban:  {{item.idDepartment.departmentName}} </v-card-title>
             </v-card>
          </transition>
       </v-timeline-item>

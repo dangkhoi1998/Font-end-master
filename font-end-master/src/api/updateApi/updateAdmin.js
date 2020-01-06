@@ -2,14 +2,35 @@ import request from '@/util/request'
 
 const date = new Date().toISOString().substr(0, 10)
 
-export function UpdatetWorkToDo (item) {
+export function UpdatePhongban (item) {
   return request({
     method: 'put',
-    url: `workToDo/${item.id}`,
-    data: {
-      commets: `${item.commets}`,
-      date: date,
-    },
+    url: `admin/bantin/phongban/${item.idDepartment}`,
+    data: (item),
+  })
+}
+
+export function UpdateThongtintaikhoan (item) {
+  return request({
+    method: 'put',
+    url: `admin/thongtintaikhoan/${item.idEmpl}`,
+    data: (item),
+  })
+}
+
+export function UpdateKhachhang (item) {
+  return request({
+    method: 'put',
+    url: `admin/khachhang/${item.idEmpl}`,
+    data: (item),
+  })
+}
+
+export function UpdateNhanvien (item) {
+  return request({
+    method: 'put',
+    url: `admin/nhanvien//${item.idEmpl}`,
+    data: (item)
   })
 }
 

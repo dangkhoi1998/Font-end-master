@@ -40,7 +40,7 @@
             </template>
 
             <v-list-item
-              v-for="subitem in item.items"
+              v-for=" subitem in item.items"
               style="text-decoration:none"
               :to="subitem.to"
             > 
@@ -50,7 +50,7 @@
         
         <v-list-item 
           v-else
-          :to="item.to +$route.params.idEmpl"
+          :to=" '/' + $route.params.levell + item.to"
           active-class="primary white--text"
           style="text-decoration:none">
           <v-list-item-icon>

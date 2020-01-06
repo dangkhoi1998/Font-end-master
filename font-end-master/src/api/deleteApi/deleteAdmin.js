@@ -1,8 +1,15 @@
 import request from '@/util/request'
 
-export function DeleteWorkToDoApi (id) {
+export function DeletePhongban (item) {
   return request({
-    url: `workToDo/${id}`,
+    url: `admin/bantin/phongban/${item.idDepartment}`,
+    method: 'delete',
+  })
+}
+
+export function DeleteKhachhang (item) {
+  return request({
+    url: `admin/khachhang/${item.idCus}`,
     method: 'delete',
   })
 }

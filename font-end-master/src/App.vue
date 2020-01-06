@@ -33,7 +33,6 @@ export default {
     getlogin () {
       getLogin()
        .then(response => {
-         console.log('dđsss', response.data)
          this.mockAccount = response.data
        })
     }
