@@ -64,7 +64,7 @@
         status: [],
         id_empl: [],
         delivery: ['Giao hàng tiết kiệm', 'Giao hàng nhanh'],
-        stt: ['Tạm ngừng hoạt động', 'Chờ kích hoạt', 'Đang hoạt động'],
+        stt: ['chot', 'chua chot', 'hen goi lai'],
         headers: [
           { text: 'Họ và Tên', align: 'left', sortable: false, value: 'cusName' },
           { text: 'Số điện thoại', align: 'left', value: 'phoneNum' },
