@@ -73,7 +73,7 @@
           { text: 'Số lượng', align: 'left', value: 'amountt' },
           { text: 'Giá', align: 'left', value: 'price' },
           { text: 'Ngày mua', align: 'left', value: 'dateOfPurchase' },
-          { text: 'Tên nhân viên', align: 'left', value: 'id_empl' },
+          { text: 'Tên nhân viên', align: 'left', value: 'id_empl' }, 
           { text: 'Giao vận', align: 'left', value: 'delivery' },
           { text: 'Nguồn', align: 'left', value: 'sources' },
           { text: 'Trạng thái', align: 'left', value: 'stt' },

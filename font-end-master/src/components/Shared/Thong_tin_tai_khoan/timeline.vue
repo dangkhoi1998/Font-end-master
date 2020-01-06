@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-timeline v-for="item in items">
+    <v-timeline :items="items">
       <v-timeline-item icon="mdi-account" fillDot>
         <transition
           appear
           enter-class=""
           enter-active-class="animated fadeInRightBig delay-1s">
           <v-card class="elevation-2 ">
-              <v-card-title  class="headline">Họ và tên: {{item.name_empl}}</v-card-title>
+              <v-card-title  class="headline">Họ và tên: {{items.nameEmpl}}</v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
@@ -17,7 +17,7 @@
           enter-class=""
           enter-active-class="animated fadeInLeftBig delay-2s faster">
         <v-card class="elevation-2">
-          <v-card-title class="headline">Số điện thoại: {{item.phone_num}}</v-card-title>
+          <v-card-title class="headline">Số điện thoại: {{items.phoneNum}}</v-card-title>
         </v-card>
         </transition>
       </v-timeline-item>
@@ -27,7 +27,7 @@
           enter-class=""
           enter-active-class="animated fadeInRightBig delay-2s">
           <v-card class="elevation-2">
-            <v-card-title class="headline">Địa chỉ:  {{item.addresss}} </v-card-title>
+            <v-card-title class="headline">Địa chỉ:  {{items.addresss}} </v-card-title>
           </v-card>
           </transition>
       </v-timeline-item>
@@ -37,7 +37,7 @@
         enter-class=""
         enter-active-class="animated fadeInLeftBig delay-3s faster">
           <v-card class="elevation-2">
-            <v-card-title class="headline">Ngày sinh:  {{item.date_of_birth}} </v-card-title>
+            <v-card-title class="headline">Ngày sinh:  {{items.dateOfBirth}} </v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
@@ -47,7 +47,7 @@
         enter-class=""
         enter-active-class="animated fadeInRightBig delay-3s">
           <v-card class="elevation-2">
-            <v-card-title class="headline" >Email:  {{item.email}} </v-card-title>
+            <v-card-title class="headline" >Email:  {{items.email}} </v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
@@ -57,7 +57,7 @@
         enter-class=""
         enter-active-class="animated fadeInLeftBig delay-4s faster">
           <v-card class="elevation-2">
-            <v-card-title class="headline">Chức vụ:  {{item.level}} </v-card-title>
+            <v-card-title class="headline">Chức vụ:  {{items.levell}} </v-card-title>
           </v-card>
         </transition>
       </v-timeline-item>
@@ -67,7 +67,7 @@
           enter-class=""
           enter-active-class="animated fadeInRightBig delay-4s">
             <v-card class="elevation-2">
-              <v-card-title class="headline">Phòng Ban:  {{item.id_department}} </v-card-title>
+              <v-card-title class="headline">Phòng Ban:  {{items.idDepartment.idDepartment}} </v-card-title>
             </v-card>
          </transition>
       </v-timeline-item>
@@ -76,16 +76,17 @@
 </template>
 
 <script>
+import axios from 'axios'
   export default {
     data: () => ({
     }),
     props: {
       items: {
         require: true,
-        type: [Object, Array],
+        type: Object,
         default: null
       }
-    }
+    },
   }
 </script>
 <style lang="scss">

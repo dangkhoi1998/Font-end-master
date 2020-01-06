@@ -10,7 +10,7 @@ export default {
     params: '$route.params.idEmpl',
     links: [
       {
-        to: "/list-two/trang-chu/ ",
+        to: "/list-two/trang-chu/",
         icon: "mdi-view-dashboard",
         text: "Trang chủ",
       },

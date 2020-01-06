@@ -155,15 +155,15 @@ export default new Router({
           component: DetailTrangChu,
           children: [
             { path: 'trang-chu/:idEmpl', name: 'thanhvien', component: HomelistTwo },
-            { path: 'cong-viec', name: 'List công việc', component: HomeCongViec },
-            { path: 'thong-bao', name: 'Thông báo', component: HomeThongBao },
+            { path: 'cong-viec/:idEmpl', name: 'List công việc', component: HomeCongViec },
+            { path: 'thong-bao/:idEmpl', name: 'Thông báo', component: HomeThongBao },
             {
-              path: 'thong-tin-ban-than',
+              path: 'thong-tin-ban-than/:idEmpl',
               name: 'Thông tin bản thân',
               component: HomeTTBT,
               children: [
                 { path: '', name: 'Thông báo', component: List },
-                { path: 'cap-nhat', name: 'Cập nhật', component: twoCapnhat },
+                { path: 'cap-nhat/:idEmpl', name: 'Cập nhật', component: twoCapnhat },
               ],
             },
             { path: 'list', name: 'List danh sách', component: ListThi },

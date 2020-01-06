@@ -21,7 +21,7 @@
         <v-data-table
           :headers="headers"
           :items="desserts"
-          item-key="id"
+          item-key="idOpportunity"
           show-expand
           :search="search"
           no-data-text="Không có dữ liệu"
@@ -166,7 +166,7 @@
     },
     methods: {
       getItem () {
-        this.getApi()
+        this.getApi(this.$route.params.idEmpl)
           .then(response => {
             this.desserts = response.data
           })
