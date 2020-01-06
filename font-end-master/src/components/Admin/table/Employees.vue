@@ -271,7 +271,7 @@
         })
         Object.assign(this.desserts[this.editedIndex], this.item)
         this.snackbar()
-        this.text = 'Sửa thành công !'
+        this.text = 'Sửa thành công!'
         this.dialog = false
       },
 
