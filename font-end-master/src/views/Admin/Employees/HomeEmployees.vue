@@ -4,7 +4,7 @@
     <div v-if="!isLoading">
       <app-employees
       :headers="headers"
-      :list-api="getemployee"
+      :list-api="getNhanvien"
       :update-api="updateEmployeeApi">
         <template v-slot:formEmployees="{ item }" >
           <v-container>
@@ -49,7 +49,7 @@
 
 <script>
   import Employees from '../../../components/Admin/table/Employees'
-  import { getemployee, updateEmployeeApi } from '../../../api/GetApi/getApiAdmin'
+  import { getNhanvien, updateEmployeeApi } from '../../../api/GetApi/getApiAdmin'
   import { getDepartmentApi } from '../../../api/getApi'
   import { loading } from '../../../mixins/loading.mixin'
   export default {
@@ -57,7 +57,7 @@
     data() {
       return {
         show1: false,
-        getemployee,
+        getNhanvien,
         updateEmployeeApi,
         rules: {
           email: v => (v || '').match(/@/) || 'Please enter a valid email',

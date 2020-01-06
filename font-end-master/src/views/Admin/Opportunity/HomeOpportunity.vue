@@ -4,7 +4,7 @@
     <app-opportunity
     v-if="!isLoading"
     :headers="headers"
-    :list-api="getOpportunityApi"
+    :list-api="getCohoi"
     :update-api="updateOpportunityApi"
 >
       <template v-slot:formOpportunity="{ item }" >
@@ -53,13 +53,13 @@
 <script>
   import Opportunity from '../../../components/Admin/table/Opportunity'
   import datetimePicker from '../../DatetimePicker'
-  import { getOpportunityApi, getemployee, updateOpportunityApi } from '../../../api/GetApi/getApiAdmin'
+  import { getCohoi , getNhanvien, updateOpportunityApi } from '../../../api/GetApi/getApiAdmin'
   import {loading} from '../../../mixins/loading.mixin'
   export default {
     mixins: [loading],
     data() {
       return {
-        getOpportunityApi,
+        getCohoi,
         updateOpportunityApi,
         status: [],
         id_empl: [],
@@ -91,7 +91,7 @@
     methods: {
       getItem () {
         this.isLoading = true
-        getemployee ()
+        getNhanvien ()
           .then(response=>{
             for (const i in response.data) {
               this.id_empl.push(response.data[i]['nameEmpl'])

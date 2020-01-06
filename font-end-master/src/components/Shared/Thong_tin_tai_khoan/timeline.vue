@@ -61,7 +61,7 @@
           </v-card>
         </transition>
       </v-timeline-item>
-      <v-timeline-item fillDot icon="assignment_ind">
+      <v-timeline-item fillDot icon="assignment_ind" v-if="item.idDepartment">
          <transition
           appear
           enter-class=""

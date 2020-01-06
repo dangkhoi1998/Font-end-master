@@ -7,27 +7,30 @@
 <script>
 export default {
   data: () => ({
-    params: '$route.params.idEmpl',
     links: [
       {
-        to: "/list-two/trang-chu/",
+        to: "/trang-chu",
         icon: "mdi-view-dashboard",
         text: "Trang chủ",
+        levell: "/list-two/"
       },
       {
-        to: "/list-two/cong-viec/",
+        to: "/cong-viec",
         icon: "mdi-account-multiple-check",
-        text: "Công việc"
+        text: "Công việc",
+        levell: "/list-two/"
       },
       {
-        to: "/list-two/thong-tin-ban-than/",
+        to: "/thong-tin-ban-than",
         icon: "mdi-account",
-        text: "Thông tin tài khoản"
+        text: "Thông tin tài khoản",
+        levell: "/list-two/"
       },
       {
-        to: "/list-two/thong-bao/",
+        to: "/thong-bao",
         icon: "mdi-bell",
-        text: "Thông báo"
+        text: "Thông báo",
+        levell: "/list-two/"
       },
     ]
   }),

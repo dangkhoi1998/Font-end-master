@@ -50,14 +50,14 @@ export default new Router({
     { path: '/', redirect: { name: 'login' } },
     { path: '/login', name: 'login', component: login },
     {
-      path: '/admin/',
+      path: '/:levell',
       name: 'detailAdmin',
       component: detailAdmin,
       children: [
-        { path: 'ban-tin/:idEmpl', name: 'Bản tin', names: 'Bản tin', component: bantin },
+        { path: 'ban-tin/', name: 'Bản tin', names: 'Bản tin', component: bantin },
         { path: 'them-cong-viec', name: 'fromword', component: fromword },
         {
-          path: 'co-hoi/:idEmpl',
+          path: 'co-hoi/',
           name: 'Cơ hội',
           component: DetailOpportunity,
           children: [
@@ -65,24 +65,23 @@ export default new Router({
             { path: 'nhap-file', name: 'Nhập file', component: Nhapfile },
           ],
         },
-        { path: 'nhan-vien/:idEmpl',
+        { path: 'nhan-vien/',
           name: 'Nhân viên',
           component: DetailEmployees,
           children: [
             { path: '', name: 'Nhân viên', component: HomeEmployees },
           ],
         },
-        { path: 'quan-ly-khach-hang/:idEmpl',
+        { path: 'quan-ly-khach-hang/',
           name: 'Quản lý khách hàng',
           component: DetailOmnichannel,
           children: [
             { path: '', name: 'Quản lý khách hàng', component: HomeOmnichannel },
           ],
         },
-        { path: 'typography', name: 'typography', component: typography },
-        { path: 'thong-bao/:idEmpl', name: 'Thông báo', component: thongbao },
+        { path: 'thong-bao/', name: 'Thông báo', component: thongbao },
         {
-          path: 'thong-tin-tai-khoan/:idEmpl',
+          path: 'thong-tin-tai-khoan/',
           name: 'Thông tin tài khoản',
           component: DetailUserProfile,
           children: [
@@ -103,7 +102,7 @@ export default new Router({
     },
     // trang List one
     {
-      path: '/list-one',
+      path: '/list-one/:idEmpl',
       name: 'Trang chủ',
       component: detailListNone,
       children: [
@@ -145,7 +144,7 @@ export default new Router({
       ],
     },
     {
-      path: '/list-two',
+      path: '/list-two/:idEmpl',
       name: 'Trang chủ',
       component: DetailTwo,
       children: [
@@ -154,9 +153,9 @@ export default new Router({
           name: 'Trang chủ',
           component: DetailTrangChu,
           children: [
-            { path: 'trang-chu/:idEmpl', name: 'thanhvien', component: HomelistTwo },
-            { path: 'cong-viec/:idEmpl', name: 'List công việc', component: HomeCongViec },
-            { path: 'thong-bao/:idEmpl', name: 'Thông báo', component: HomeThongBao },
+            { path: 'trang-chu', name: 'thanhvien', component: HomelistTwo },
+            { path: 'cong-viec', name: 'List công việc', component: HomeCongViec },
+            { path: 'thong-bao', name: 'Thông báo', component: HomeThongBao },
             {
               path: 'thong-tin-ban-than/:idEmpl',
               name: 'Thông tin bản thân',

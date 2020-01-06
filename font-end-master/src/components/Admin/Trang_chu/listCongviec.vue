@@ -21,17 +21,17 @@
                   <v-list-item-title>
                       <v-layout row>
                         <v-col cols="6">
-                          <v-card class="d-flex flex-row mb-4 font-weight-medium" flat tile>{{item.work_name}}</v-card>
-                          <v-chip class="mx-2" v-for="phong in item.id_department" :key="phong" outlined color="orange" label small>{{phong}}</v-chip>
+                          <v-card class="d-flex flex-row mb-4 font-weight-medium" flat tile>{{item.workName}}</v-card>
+                          <v-chip class="mx-2" v-for="phong in item.idDepartment" :key="phong" outlined color="orange" label small>{{phong.departmentName}}</v-chip>
                         </v-col>
                         <v-col cols="6">
                           <v-card class="d-flex flex-row-reverse" flat tile >
                             <v-chip class="ml-5" color="primary">
                               <v-icon left color="indigo darken-3">mdi-fire</v-icon >{{item.prioritize}}
                             </v-chip>
-                            <v-chip pill class="ml-3" v-for="nhanvien in item.id_empl" :key="nhanvien" >
+                            <v-chip pill class="ml-3" v-for="nhanvien in item.idEmpl" :key="nhanvien" >
                               <v-icon left color="red">mdi-account</v-icon>
-                              {{nhanvien}}
+                              {{nhanvien.nameEmpl}}
                             </v-chip>
                           </v-card>
                         </v-col>
@@ -46,7 +46,7 @@
             <v-expansion-panel-content>
               <v-list-item three-line>
                 <v-list-item-content>
-                  <v-list-item-title>{{item.noidung}}</v-list-item-title>
+                  <v-list-item-title>Đang thiếu nội dung{{item.prioritize}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-expansion-panel-content>
@@ -57,7 +57,7 @@
   </transition>
 </template>
 <script>
-import {getworkApi} from '../../../api/getApi'
+import { getCongvec } from '../../../api/GetApi/getApiAdmin'
 export default {
   data () {
     return {
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     getList () {
-      getworkApi ()
+      getCongvec ()
         .then(response=>{
           this.items = response.data
         })

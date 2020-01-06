@@ -9,29 +9,34 @@ export default {
   data: () => ({
     links: [
       {
-        to: "/list-one/trang-chu",
+        to: "/trang-chu",
         icon: "mdi-view-dashboard",
-        text: "Trang chủ"
+        text: "Trang chủ",
+        levell: '/list-one/'
       },
       {
-        to: "/list-one/cong-viec",
+        to: "/cong-viec",
         icon: "mdi-account-multiple-check",
-        text: "Công việc"
+        text: "Công việc",
+        levell: '/list-one/'
       },
       {
-        to: "/list-one/thanh-vien",
+        to: "/thanh-vien",
         icon: "mdi-account-multiple",
-        text: "Thành viên"
+        text: "Thành viên",
+        levell: '/list-one/'
       },
       {
-        to: "/list-one/thong-tin-ban-than",
+        to: "/thong-tin-ban-than",
         icon: "mdi-account",
-        text: "Thông tin tài khoản"
+        text: "Thông tin tài khoản",
+        levell: '/list-one/'
       },
       {
-        to: "/list-one/thong-bao",
+        to: "/thong-bao",
         icon: "mdi-bell",
-        text: "Thông báo"
+        text: "Thông báo",
+        levell: '/list-one/'
       },
     ]
   }),

@@ -90,8 +90,8 @@
             </thead>
             <tbody>
               <tr>
-                <td>{{ item.name_cus }}</td>
-                <td>{{ item.phone_num }}</td>
+                <td>{{ item.nameCus }}</td>
+                <td>{{ item.phoneNum }}</td>
                 <td>{{ item.email }}</td>
               </tr>
             </tbody>
@@ -120,9 +120,9 @@
 </template>
 <script>
   import api from '../../../api/http'
-  import { PostOmninchannel } from '../../../api/PostApi/PostAdmin'
-  import { UpdateOmninchannel } from '../../../api/updateApi/updateAdmin'
-  import { DeleteOmninchannel } from '../../../api/deleteApi/deleteAdmin'
+  import { PostKhachhang } from '../../../api/PostApi/PostAdmin'
+  import { UpdateKhachhang } from '../../../api/updateApi/updateAdmin'
+  import { DeleteKhachhang } from '../../../api/deleteApi/deleteAdmin'
   export default {
     data () {
       return {
@@ -186,7 +186,7 @@
       },
 
       saveItem () {
-        PostOmninchannel(this.item)
+        PostKhachhang(this.item)
         .then(response => {
         })
         .catch(function (error) {
@@ -199,7 +199,7 @@
       },
 
       updateItem(){
-        UpdateOmninchannel(this.item)
+        UpdateKhachhang(this.item)
         .then(response => {
         })
         .catch(function (error) {
@@ -217,7 +217,7 @@
       },
 
       Delete () {
-        DeleteOmninchannel(this.item)
+        DeleteKhachhang(this.item)
         .then(response => {
         })
         .catch(function (error) {

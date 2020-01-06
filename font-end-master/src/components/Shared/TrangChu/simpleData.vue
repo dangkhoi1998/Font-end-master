@@ -19,12 +19,21 @@
           class="elevation-1"
           no-data-text="Không có dữ liệu"
         >
+        <!-- doang số nhân viên trong tháng -->
+        <template v-slot:item.nameEmpl="{item}">
+          {{item.idEmpl.nameEmpl}}
+        </template>
+          <template v-slot:item.salemonth="{item}">
+            {{item.salemonth}}
+          </template>
           <template v-slot:item.actions="{item}">
               <v-icon small class="mr-2" @click="editItem(item)" >edit</v-icon>
               <v-icon small @click="deleteItem(item)" > delete  </v-icon>
           </template>
         </v-data-table>
+
       </material-card>
+
     </transition>
       <v-dialog v-model="dialog" max-width="500px">
         <material-card class="card-tabs" color="orange">
@@ -106,6 +115,11 @@
         type: Function,
         default: null
       },
+      updateApi: {
+        require: true,
+        type: Function,
+        default: null
+      },
       deleteApi: {
         require: true,
         type: Function,
@@ -152,11 +166,7 @@
         this.btnPhongban = false
       },
       EditDepartment () {
-        api
-        .put('department/' + this.item.id , {
-          department_name: this.item.department_name,
-          id_department: this.item.id_department
-        })
+        this.updateApi(this.item)
           .then(response => {
             console.log(response)
           })

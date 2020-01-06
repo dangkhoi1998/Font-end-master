@@ -6,7 +6,6 @@
       </v-btn>
       <span class="mt-2">{{ title }}</span>
     </v-toolbar-title>
-
     <v-spacer />
 
     <v-toolbar-items>
@@ -75,8 +74,8 @@
          
           <v-card>
             <v-list dense>
-              <v-list-item v-for="(link, i) in links" :key="i" :to="link.to" style="text-decoration:none">
-                <v-list-item-action>
+              <v-list-item v-for="(link, i) in links" :key="i"  style="text-decoration:none" @click="$store.state.authenticated = false" :to="link.to">
+                <v-list-item-action >
                   <v-icon>{{link.icon}}</v-icon>
                 </v-list-item-action>
 
@@ -120,8 +119,10 @@
         this.title = val.name
       },
     },
-
     computed: {
+      authenticated () {
+        return this.$store.state.authenticated
+      },
       classObject () {
         if (this.notifications.length > 1) {
           return {
@@ -133,7 +134,7 @@
           return {
           }
         }
-      }
+      },
     },
     mounted () {
       this.onResponsiveInverted()

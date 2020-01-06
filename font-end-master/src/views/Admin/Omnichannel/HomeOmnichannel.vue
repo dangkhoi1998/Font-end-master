@@ -6,16 +6,16 @@
     enter-active-class="animated jackInTheBox">
       <app-omnichannel
       :headers="headers"
-      :list-api="getOmninchannelApi"
+      :list-api="getKhachhang"
       :update-api="updateOmninchannelApi"
-      :add-api="addOmninchannelApi">
+      :add-api="PostKhachhang">
         <template v-slot:formOmnichannel="{ item }" >
 
           <v-container>
               <v-row>
                 <v-col cols="12" class="py-0">
                   <v-text-field 
-                  v-model="item.name_cus" 
+                  v-model="item.nameCus" 
                   label="Họ và tên" 
                   :rules="[v => !!v || 'Thông tin bắng buộc']"
                   outlined 
@@ -23,7 +23,7 @@
                 </v-col>
                 <v-col cols="12" class="py-0">
                   <v-text-field 
-                  v-model="item.phone_num" 
+                  v-model="item.phoneNum" 
                   label="Số điện thoại" 
                   :rules="phone"
                   outlined required></v-text-field>
@@ -38,7 +38,7 @@
                 </v-col>
                 <v-col cols="12" class="py-0">
                   <v-text-field 
-                  v-model="item.user" 
+                  v-model="item.userCus" 
                   label="Tên đăng nhập" 
                   placeholder="Email / Số điện thoại/ Tên đăng nhập" 
                   :rules="[v => !!v || 'Thông tin bắng buộc']" 
@@ -46,7 +46,7 @@
                 </v-col>
                 <v-col cols="12" sm="6" class="py-0">
                   <v-text-field 
-                  v-model="item.pass" 
+                  v-model="item.passCus" 
                   type="password" 
                   label="Mật khẩu" 
                   :rules="[rules.password, rules.length(6)]"
@@ -67,13 +67,14 @@
 
 <script>
   import Omnichannel from '../../../components/Admin/table/Omnichannel'
-  import { getOmninchannelApi, updateOmninchannelApi, addOmninchannelApi } from '../../../api/khachang'
+  import { getKhachhang, updateOmninchannelApi } from '../../../api/GetApi/getApiAdmin'
+  import { PostKhachhang } from '../../../api/PostApi/PostAdmin'
   export default {
     data() {
       return {
-        getOmninchannelApi,
+        getKhachhang,
         updateOmninchannelApi,
-        addOmninchannelApi,
+        PostKhachhang,
         rules: {
           email: v => (v || '').match(/@/) || 'Please enter a valid email',
           length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
@@ -83,11 +84,11 @@
         },
         stt: ['Tạm ngừng hoạt động', 'Chờ kích hoạt', 'Đang hoạt động'],
         headers: [
-          { text: 'Họ và Tên', align: 'left', sortable: false, value: 'name_cus' },
-          { text: 'Số điện thoại', align: 'left', value: 'phone_num' },
+          { text: 'Họ và Tên', align: 'left', sortable: false, value: 'nameCus' },
+          { text: 'Số điện thoại', align: 'left', value: 'phoneNum' },
           { text: 'Email', align: 'left', value: 'email' },
-          { text: 'User', align: 'left', value: 'user' },
-          { text: 'Pass', align: 'left', value: 'pass' },
+          { text: 'User', align: 'left', value: 'userCus' },
+          { text: 'Pass', align: 'left', value: 'passCus' },
           { text: 'Trạng thái', align: 'left', value: 'stts' },
           { text: 'Actions', align: 'left', value: 'actions' },
         ],
