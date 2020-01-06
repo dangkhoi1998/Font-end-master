@@ -14,10 +14,18 @@ export function DeleteKhachhang (item) {
   })
 }
 
-export function DeleteOmninchannel (item) {
+export function DeleteNhanvien (item) {
   return request({
     method: 'delete',
-    url: `Omninchannel/${item.id}`,
+    url: `admin/nhanvien//${item.idEmpl}`,
+  })
+}
+
+
+export function DeleteCohoi (item) {
+  return request({
+    method: 'delete',
+    url: `admin/cohoi//${item.idOpportunity}`,
   })
 }
 

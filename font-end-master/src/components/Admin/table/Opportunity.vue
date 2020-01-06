@@ -198,8 +198,8 @@
 </template>
 <script>
   import { PostOpportunityApi } from '../../../api/PostApi/PostAdmin'
-  import { UpdateOpportunity } from '../../../api/updateApi/updateAdmin'
-  import { DeleteOpportunity } from '../../../api/deleteApi/deleteAdmin'
+  import { UpdateCohoi } from '../../../api/updateApi/updateAdmin'
+  import { DeleteCohoi } from '../../../api/deleteApi/deleteAdmin'
   export default {
     data () {
       return {
@@ -276,7 +276,7 @@
       },
 
       updateItem(){
-        UpdateOpportunity(this.item)
+        UpdateCohoi(this.item)
         .then(response => {
         })
         .catch(function (error) {
@@ -294,7 +294,7 @@
       },
 
       Delete () {
-        DeleteOpportunity(this.item)
+        DeleteCohoi(this.item)
         .then(response => {
         })
         .catch(function (error) {

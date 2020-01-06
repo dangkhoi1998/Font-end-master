@@ -50,7 +50,7 @@ export default new Router({
     { path: '/', redirect: { name: 'login' } },
     { path: '/login', name: 'login', component: login },
     {
-      path: '/:levell',
+      path: '/admin/:idEmpl',
       name: 'detailAdmin',
       component: detailAdmin,
       children: [
@@ -102,7 +102,7 @@ export default new Router({
     },
     // trang List one
     {
-      path: '/list-one/:idEmpl',
+      path: '/truong-phong/:idEmpl',
       name: 'Trang chủ',
       component: detailListNone,
       children: [
@@ -144,7 +144,7 @@ export default new Router({
       ],
     },
     {
-      path: '/list-two/:idEmpl',
+      path: '/nhan-vien/:idEmpl',
       name: 'Trang chủ',
       component: DetailTwo,
       children: [

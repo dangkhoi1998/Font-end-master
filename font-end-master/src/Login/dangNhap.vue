@@ -136,14 +136,14 @@ export default {
             this.level.level1 === this.$parent.mockAccount[i].levell
           ) {
             this.$emit('authenticated', true)
-            this.$router.push(this.$parent.mockAccount[i].levell + '/ban-tin/')
+            this.$router.push('/admin/' + this.$parent.mockAccount[i].idEmpl + '/ban-tin/')
           } else if (
             this.input.userr === this.$parent.mockAccount[i].userr &&
             this.input.pass === this.$parent.mockAccount[i].pass &&
             this.level.level2 === this.$parent.mockAccount[i].levell
           ) {
             this.$emit('authenticated', true)
-            this.$router.push('/list-one/' + this.$parent.mockAccount[i].idEmpl + '/trang-chu/' )
+            this.$router.push( '/truong-phong/' + this.$parent.mockAccount[i].idEmpl + '/trang-chu/' )
           } else if (
             this.input.userr === this.$parent.mockAccount[i].userr &&
             this.input.pass === this.$parent.mockAccount[i].pass &&
@@ -151,7 +151,7 @@ export default {
           ) {
             this.$emit('authenticated', true)
             this.$store.state.authenticated = true
-            this.$router.push('/list-two/' + this.$parent.mockAccount[i].idEmpl +'/trang-chu/')
+            this.$router.push('/nhan-vien/' + this.$parent.mockAccount[i].idEmpl +'/trang-chu/')
           } else {
             this.text= 'Bạn nhập sai tài khoản hoặc mật khẩu'
           }
