@@ -33,11 +33,15 @@
               <v-col cols="12" sm="6" md="6" class="py-0">
                 <v-combobox v-model="item.userr"  :items="department_name" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" label="Tên đăng nhập" outlined required></v-combobox>
               </v-col>
-              <v-col cols="12" sm="6" md="6" class="py-0">
+              <v-col cols="12" sm="8" md="8" class="py-0">
                 <v-text-field :type="show1 ? 'text' : 'password'" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" @click:append="show1 = !show1"  v-model="item.pass" :rules="[rules.password, rules.length(6)]" label="Mật khẩu" outlined required></v-text-field>
               </v-col>
-              <v-col cols="12" sm="6" md="6" class="py-0">
-                <v-combobox v-model="item.stt" height="30" :items="stt" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" outlined  label="Trạng thái"></v-combobox>
+              <v-col cols="12" sm="3" class="">
+                <span style="font-size: 17px;">Trạng thái: </span>
+              </v-col>
+              <v-col cols="12" sm="1" md="1" class="px-0 mx-0 py-0 my-0">
+                <v-switch v-model="item.stt" class="mb-5 pb-5"></v-switch>
+                <!-- <v-combobox v-model="item.stt" height="30" :items="stt" :rules="[v => !!v || 'Thông tin bắt buộc ' ]" outlined  label="Trạng thái"></v-combobox> -->
               </v-col>
             </v-row>
           </v-container>
@@ -57,6 +61,7 @@
     data() {
       return {
         show1: false,
+        switch1: false,
         getNhanvien,
         updateEmployeeApi,
         rules: {

@@ -4,7 +4,7 @@
         appear
         enter-class=""
         enter-active-class="animated fadeInLeftBig">
-          <app-bieudo></app-bieudo>
+        <app-bieudo></app-bieudo>
       </transition>
       <v-row class="mx-4">
         <!-- .......................................... -->

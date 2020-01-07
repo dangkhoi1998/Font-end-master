@@ -159,6 +159,7 @@ export default {
       } else {
         this.text= 'Không được để trống tên User và Password'
       }
+      this.input= {}
     },
   },
   watch: {

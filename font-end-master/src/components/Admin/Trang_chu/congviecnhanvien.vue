@@ -61,7 +61,7 @@ export default {
         }
       },
       {
-        subheading: "Chưa liệu hệ",
+        subheading: "Chưa chốt đata",
         headline: "",
         caption: "Chưa liên hệ",
         icon: {

@@ -7,22 +7,24 @@
 
 <script>
 import Timeline from '../../../components/Shared/Thong_tin_tai_khoan/timeline'
+import { getThongtintaikhoan } from '../../../api/GetApi/getTruongphong'
 export default {
   data: () => ({
-    items: [
-      {
-        name_empl: 'Nghĩa cu te',
-        email: 'ad@gmail.com',
-        phone_num: '0976543223  ',
-        addresss: 'Hát Môn - Phúc Thọ - Hà Nội',
-        date_of_birth: '20/11/2019',
-        level: 'Nhân viên',
-        id_department: 'Phòng Kinh Doanh',
-        pass: '12345678',
-        stt: 'Đang hoạt động'
-      }
-    ]
+    items: {}
   }),
+  created () {
+    this.listApi()
+  },
+  methods: {
+    listApi () {
+      console.log('sssssssssss', this.$route.params.idEmpl)
+      getThongtintaikhoan(this.$route.params.idEmpl)
+        .then(response => {
+          console.log('dddddđ', response.data)
+          this.items = response.data
+        })
+    }
+  },
   components: {
     appTimeline: Timeline,
   }
