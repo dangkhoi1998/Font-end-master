@@ -1,51 +1,83 @@
 <template>
   <section class="mt-lg-5">
-      <mdb-row>
-        <mdb-col v-for="item in wordEmp" xl="4" md="4" class="mb-r">
-          <mdb-card cascade class="cascading-admin-card">
-            <div class="admin-up">
-              <v-icon  :class="item.class" class="far">{{item.icon}}</v-icon>
-              <div class="data">
-                <p>{{item.title}}</p>
-                <h4>
-                  <strong>{{item.value}}</strong>
-                </h4>
-              </div>
-            </div>
-            <mdb-card-body>
-              <v-progress-linear
-                :color="item.class"
-                height="15"
-                :value="item.value"
-              ></v-progress-linear>
-            </mdb-card-body>
-          </mdb-card>
-        </mdb-col>
-      </mdb-row>
+      <v-row>
+        <v-col xl="4" v-for="item in desserts" md="12" class="mb-r">
+          <material-stats-card
+          color="green"
+          icon="mdi-store"
+          title="Doanh số theo tuần"
+          :value="item.totalSale"
+          sub-icon="mdi-calendar"
+          :sub-text="`Tổng kết của theo:` + item.day + `/` + item.month + `/` + item.year"
+        />
+        </v-col>
+        <v-col xl="4" v-for="item in dessertsTuan" md="12" class="mb-r">
+            <material-stats-card
+              color="orange"
+              icon="mdi-content-copy"
+              title="Doanh số theo tháng"
+              :value="item.totalSale"
+              small-value="GB"
+              sub-icon="mdi-alert"
+              sub-icon-color="error"
+              :sub-text="`Tổng kết của tháng:` + item.month + `/` + item.year"
+              sub-text-color="text-primary"
+            />
+        </v-col>
+        <v-col xl="4" v-for="item in dessertsThang" md="12" class="mb-r">
+            <material-stats-card
+              color="red"
+              icon="mdi-information-outline"
+              title="Doanh số theo năm"
+              :value="item.totalSale"
+              sub-icon="mdi-tag"
+              :sub-text="`Tổng kết theo năm:` + item.year"
+            />
+        </v-col>
+      </v-row>
     </section>
 </template>
 
 <script>
-import { mdbRow, mdbCol, mdbCard, mdbCardBody, mdbCardText, mdbIcon, } from 'mdbvue'
   export default {
     data () {
       return {
+        desserts:{},
+        dessertsTuan:{},
+        dessertsThang:{},
       } 
     },
     props: {
-      wordEmp: {
+      getApi: {
         require: true,
-        type: Array,
+        type: Function,
+        default: null
+      },
+      getApiTuan: {
+        require: true,
+        type: Function,
+        default: null
+      },
+      getApiThang: {
+        require: true,
+        type: Function,
         default: null
       },
     },
-    components: {
-    mdbRow,
-    mdbCol,
-    mdbCard,
-    mdbCardBody,
-    mdbCardText,
-    mdbIcon,
+    created () {
+      this.getApi(this.$route.params.idEmpl)
+      .then(response => {
+        this.desserts = response.data
+      })
+      this.getApiTuan(this.$route.params.idEmpl)
+      .then(response => {
+        console.log('ddddddđ',response)
+        this.dessertsTuan = response.data
+      })
+      this.getApiThang(this.$route.params.idEmpl)
+      .then(response => {
+        this.dessertsThang = response.data
+      })
     },
   }
 </script>

@@ -1,13 +1,15 @@
 <template>
   <v-container fluid>
     <so-luong-cong-viec
-    :wordEmp="wordEmp"></so-luong-cong-viec>
+    :getApi="getDSNgayApi"
+    :getApiTuan="getDSThangApi"
+    :getApiThang="getDSNamApi"></so-luong-cong-viec>
     <v-row>
       <v-col cols="12" lg="8">
         <bieu-do :barChartData="barChartData" :barChartOptions="barChartOptions" ></bieu-do>
 
         <list-cong-viec
-        :list-api="getworkApi"></list-cong-viec> 
+        :list-api="getListCV"></list-cong-viec> 
       </v-col>
       <v-col cols="12" sm="4">
         <trang-thai
@@ -16,7 +18,7 @@
         <app-dsnv
         :text="text"
         :headers="headers"
-        :get-api="getRevenueApi"></app-dsnv>
+        :get-api="getDSNVien"></app-dsnv>
 
         <viec-can-lam
         :list-api="getworToDokApi"
@@ -29,23 +31,22 @@
 </template>
 
 <script>
-  import { getRevenueApi, getworkApi, getworToDokApi } from '../../../api/getApi'
   import { PostWorkToDo } from '../../../api/PostApi/PostAdmin'
   import { DeleteWorkToDoApi } from '../../../api/deleteApi/deleteAdmin'
   import { UpdatetWorkToDo } from '../../../api/updateApi/updateAdmin'
+  import { getDSNgayApi,getDSThangApi, getDSNamApi, getDSNVien,getListCV } from '../../../api/ListOne/getApi'
   export default {
     data () {
       return {
-        getworToDokApi,
-        DeleteWorkToDoApi,
-        UpdatetWorkToDo,
-        getworkApi,
-        PostWorkToDo,
-        getRevenueApi,
+        getDSNVien,
+        getListCV,
+        getDSThangApi,
+        getDSNamApi,
+        getDSNgayApi,
         text: 'Doanh số nhân viên theo tháng',
         headers: [
-          { text: 'Họ và tên', value: 'name_empl', align: 'left'},
-          { text: 'Doanh thu', value: 'doanhthu', align: 'left'},
+          { text: 'Họ và tên', value: 'nameEmpl', align: 'left'},
+          { text: 'Doanh thu', value: 'totalSale', align: 'left'},
         ],
         
         locationData: [
@@ -70,26 +71,26 @@
             name: "Không có nhu cầu"
           }
         ],
-        wordEmp:[
-          {
-            title:'Công việc theo tuần',
-            icon:'mdi-finance',
-            value:'50',
-            class:'warning',
-          },
-          {
-            title:'Công việc theo tháng',
-            icon:'mdi-chart-pie',
-            value:'70',
-            class:'light-blue lighten-1',
-          },
-          {
-            title:'Công việc theo tuần',
-            icon:'mdi-chart-bar',
-            value:'60',
-            class:'red accent-2',
-          }
-        ],
+        // wordEmp:[
+        //   {
+        //     title:'Công việc theo tuần',
+        //     icon:'mdi-finance',
+        //     value:'50',
+        //     class:'warning',
+        //   },
+        //   {
+        //     title:'Công việc theo tháng',
+        //     icon:'mdi-chart-pie',
+        //     value:'70',
+        //     class:'light-blue lighten-1',
+        //   },
+        //   {
+        //     title:'Công việc theo tuần',
+        //     icon:'mdi-chart-bar',
+        //     value:'60',
+        //     class:'red accent-2',
+        //   }
+        // ],
         barChartData: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Oct','Nov','Dec'],
         datasets: [
@@ -135,7 +136,7 @@
       },
     }
   },
-    components: {
+  components: {
       soLuongCongViec: () => import ('../../../components/Shared/TrangChu/so_luong_cong_viec'),
       listCongViec: () => import ('../../../components/Shared/TrangChu/List_cong_viec'),
       appDsnv: () => import('../../../components/Shared/TrangChu/simpleData'),

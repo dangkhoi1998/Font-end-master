@@ -11,7 +11,7 @@
             <v-btn class="ma-2" tile depressed @click="addItem" outlined color="red">
               <v-icon left>mdi-account-plus-outline</v-icon>THÊM MỚI CƠ HỘ 
             </v-btn>
-            <v-btn class="ma-2" tile depressed :to="'/admin/co-hoi/'+  $route.params.idEmpl + '/nhap-file'" style="text-decoration:none" outlined color="blue">
+            <v-btn class="ma-2" tile depressed :to="'/admin/'+  $route.params.idEmpl + '/co-hoi/nhap-file'" style="text-decoration:none" outlined color="blue">
               <v-icon left>mdi-account-plus-outline</v-icon>Import excel
             </v-btn>
            <div>

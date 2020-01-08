@@ -157,12 +157,12 @@ export default new Router({
             { path: 'cong-viec', name: 'List công việc', component: HomeCongViec },
             { path: 'thong-bao', name: 'Thông báo', component: HomeThongBao },
             {
-              path: 'thong-tin-ban-than/:idEmpl',
+              path: 'thong-tin-ban-than/',
               name: 'Thông tin bản thân',
               component: HomeTTBT,
               children: [
                 { path: '', name: 'Thông báo', component: List },
-                { path: 'cap-nhat/:idEmpl', name: 'Cập nhật', component: twoCapnhat },
+                { path: 'cap-nhat-ho-so', name: 'Cập nhật', component: twoCapnhat },
               ],
             },
             { path: 'list', name: 'List danh sách', component: ListThi },

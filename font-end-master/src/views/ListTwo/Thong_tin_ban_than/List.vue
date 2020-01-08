@@ -25,7 +25,6 @@ export default {
       getBanthan(this.$route.params.idEmpl)
       axios.get('http://localhost:8081/nhanvien/thongtintaikhoan/' + this.$route.params.idEmpl)
         .then(response => {
-          console.log(response)
           this.items = response.data
         })
     }

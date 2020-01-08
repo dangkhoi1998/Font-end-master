@@ -13,7 +13,7 @@
           <v-list-item-subtitle class="mb-5">  
             <v-row row class="my-0 py-0">
               <v-col cols="12" md="9" class="my-0 py-0">
-                <span class="ml-3 mr-1">{{item.contactTime}}</span>
+                <span class="ml-3 mr-1">{{item.contact_time}}</span>
                 <span class="ml-1 mr-1">{{item.appointment_time}}</span>
                 <v-icon class="v-icon1" height="10" size="15" :color="getColorComments(item.icon)" >{{item.icon}}</v-icon>
               </v-col>

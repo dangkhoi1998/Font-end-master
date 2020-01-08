@@ -41,9 +41,7 @@
                 <p class="font-weight-light">
                   Admin
                 </p>
-                <v-btn to="/admin/thong-tin-tai-khoan/cap-nhat-ho-so" style="text-decoration:none" color="success">
-                  Cập nhật hồ sơ
-                </v-btn>
+                <v-btn :to="'/admin/'+  $route.params.idEmpl + '/thong-tin-tai-khoan/cap-nhat-ho-so'" style="text-decoration:none" color="success">Cập nhật hồ sơ</v-btn>
               </v-card-text>
             </material-card>
           </v-col>

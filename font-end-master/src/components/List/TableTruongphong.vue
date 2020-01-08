@@ -21,7 +21,7 @@
         <v-data-table
           :headers="headers"
           :items="desserts"
-          item-key="idOpportunity"
+          item-key="idEmpl"
           show-expand
           :search="search"
           no-data-text="Không có dữ liệu"

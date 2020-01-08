@@ -9,12 +9,10 @@
           [
             'color',
             [
-              color.lightBlue.base,
-              color.indigo.base,
+              color.red.base,
               color.pink.base,
               color.green.base,
               color.cyan.base,
-              color.teal.base
             ]
           ],
           ['xAxis.show', false],

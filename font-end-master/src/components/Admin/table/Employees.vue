@@ -75,9 +75,7 @@
           </td>
         </template>
 
-        <template v-slot:item.iddepartment="{item}">
-          {{item.idDepartment.departmentName}}
-        </template>
+        
 
         <template v-slot:item.stt="{item}">
           <v-icon size="16" :color="getColorstt(item.stt)">fiber_manual_record</v-icon>{{item.stt}}

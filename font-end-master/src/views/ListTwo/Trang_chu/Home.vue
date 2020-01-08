@@ -1,11 +1,12 @@
 <template>
   <v-container fluid>
     <so-luong-cong-viec
-    :wordEmp="wordEmp"></so-luong-cong-viec>
+    :getApi="getDSNgayApi"
+    :getApiTuan="getDSThangApi"
+    :getApiThang="getDSNamApi"></so-luong-cong-viec>
     <v-row>
       <v-col cols="12" lg="8">
-        <list-cong-viec
-        :list-api="getworkApi"></list-cong-viec> 
+        <list-cong-viec></list-cong-viec> 
       </v-col>
       <v-col cols="12" sm="4">
         <trang-thai
@@ -14,7 +15,8 @@
           :list-api="getworToDokApi"
           :post-api="PostWorkToDo"
           :put-api="UpdatetWorkToDo"
-          :delete-api="DeleteWorkToDoApi"></viec-can-lam>
+          :delete-api="DeleteWorkToDoApi">
+        </viec-can-lam>
       </v-col>
     </v-row>
   </v-container>
@@ -25,6 +27,7 @@
   import { PostWorkToDo } from '../../../api/PostApi/PostAdmin'
   import { DeleteWorkToDoApi } from '../../../api/deleteApi/deleteAdmin'
   import { UpdatetWorkToDo } from '../../../api/updateApi/updateAdmin'
+  import { getDSNgayApi,getDSThangApi, getDSNamApi } from '../../../api/ListTwo/getApi'
 export default {
   data: () => ({
     getworToDokApi,
@@ -32,26 +35,29 @@ export default {
     DeleteWorkToDoApi,
     UpdatetWorkToDo,
     getworkApi,
-    wordEmp:[
-      {
-        title:'Công việc theo tuần',
-        icon:'mdi-finance',
-        value:'50',
-        class:'warning',
-      },
-      {
-        title:'Công việc theo tháng',
-        icon:'mdi-chart-pie',
-        value:'70',
-        class:'light-blue lighten-1',
-      },
-      {
-        title:'Công việc theo tuần',
-        icon:'mdi-chart-bar',
-        value:'60',
-        class:'red accent-2',
-      }
-    ],
+    getDSThangApi,
+    getDSNamApi,
+    getDSNgayApi,
+    // wordEmp:[
+    //   {
+    //     title:'Công việc theo tuần',
+    //     icon:'mdi-finance',
+    //     value:'50',
+    //     class:'warning',
+    //   },
+    //   {
+    //     title:'Công việc theo tháng',
+    //     icon:'mdi-chart-pie',
+    //     value:'70',
+    //     class:'light-blue lighten-1',
+    //   },
+    //   {
+    //     title:'Công việc theo tuần',
+    //     icon:'mdi-chart-bar',
+    //     value:'60',
+    //     class:'red accent-2',
+    //   }
+    // ],
     locationData: [
       {
         value: 25,
@@ -60,10 +66,6 @@ export default {
       {
         value: 35,
         name: "Đã đăng ký"
-      },
-      {
-        value: 25,
-        name: "Đang tham khảo"
       },
       {
         value: 25,

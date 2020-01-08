@@ -137,7 +137,7 @@
       }
     },
     created () {
-      this.getApi()
+      this.getApi(this.$route.params.idEmpl)
       .then(response => {
         this.desserts = response.data
       })

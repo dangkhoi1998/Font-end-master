@@ -2,14 +2,14 @@
   <v-card>
     <v-row class="mx-4">
       <v-col cols="12" sm="5">
-        <v-timeline dense v-for="item in items">
-          <v-timeline-item small>{{item.nameEmpl}}</v-timeline-item>
-          <v-timeline-item small>{{item.email}}</v-timeline-item>
-          <v-timeline-item small>{{item.phoneNum}}</v-timeline-item>
-          <v-timeline-item small>{{item.addresss}}</v-timeline-item>
-          <v-timeline-item small>{{item.dateOfBirth}}</v-timeline-item>
-          <v-timeline-item small>{{item.levell}}</v-timeline-item>
-          <v-timeline-item v-if="item.idDepartment" small>{{item.idDepartment.departmentName}}</v-timeline-item>
+        <v-timeline dense >
+          <v-timeline-item small>{{getApi.nameEmpl}}</v-timeline-item>
+          <v-timeline-item small>{{getApi.email}}</v-timeline-item>
+          <v-timeline-item small>{{getApi.phoneNum}}</v-timeline-item>
+          <v-timeline-item small>{{getApi.addresss}}</v-timeline-item>
+          <v-timeline-item small>{{getApi.dateOfBirth}}</v-timeline-item>
+          <v-timeline-item small>{{getApi.levell}}</v-timeline-item>
+          <v-timeline-item v-if="getApi.idDepartment" small>{{getApi.idDepartment.departmentName}}</v-timeline-item>
         </v-timeline>
       </v-col>
       <v-col cols="12" sm="7">
@@ -56,7 +56,7 @@
     props: {
       getApi: {
         require: true,
-        type: Function,
+        type: Object,
         default: null
       },
       updateApi: {
@@ -70,23 +70,10 @@
         default: null
       },
     },
-    created () {
-      this.listApi()
-    },
     methods: {
-      listApi () {
-        this.getApi()
-          .then(response => {
-            this.items = response.data
-            for(const i in response.data) {
-              this.Employee = response.data[i]
-            }
-          })
-      },
       Save () {
-        console.log('ddđ', this.Employee)
         this.updateApi(this.Employee)
       }
-    }
+    },
   }
 </script>

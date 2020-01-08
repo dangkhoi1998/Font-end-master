@@ -65,7 +65,7 @@
 
           <v-col cols="12" sm="6" class="my-0 py-0">
             <v-btn :disabled="!form" color="primary"  @click="SaveCommnet()">Lưu lại</v-btn>
-            <v-btn :disabled="!form" color="primary"  @click="EditCommnet()">Sửa</v-btn>
+            <v-btn :disabled="!form" color="cyan" class="ml-5" @click="EditCommnet()">Sửa</v-btn>
           </v-col>
         </v-row>
       </v-form>
