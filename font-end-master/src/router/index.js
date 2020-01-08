@@ -129,7 +129,7 @@ export default new Router({
           component: Detailyourself,
           children: [
             { path: '', name: 'Thông tin bản thân', component: Homeyourself },
-            { path: 'cap-nhat-thong-tin/:id', name: 'Cập nhật thông tin', component: Capnhattt },
+            { path: 'cap-nhat-thong-tin', name: 'Cập nhật thông tin', component: Capnhattt },
           ],
         },
         {

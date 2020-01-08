@@ -28,13 +28,6 @@ export function getListCV (paramas) {
   })
 }
 
-export function updateCohoiApi (id, data) {
-  return request({
-    url: `/cohoi1/${id}`,
-    method: 'put',
-    data,
-  })
-}
 export function getDSNgayApi (paramas) {
   return request({
     url: `truongphong/trangchu/${paramas}/doanhsongay`,
@@ -56,16 +49,9 @@ export function getDSNamApi (paramas) {
   })
 }
 
-export function getworkApi () {
+export function getThongtintaikhoan (paramas) {
   return request({
-    url: '/work',
-    method: 'get',
-  })
-}
-
-export function getworToDokApi () {
-  return request({
-    url: 'workToDo',
+    url: `truongphong/thongtinkhoan/${paramas}`,
     method: 'get',
   })
 }

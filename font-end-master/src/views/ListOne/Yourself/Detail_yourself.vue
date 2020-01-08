@@ -27,7 +27,7 @@
                     </p>
                   </v-card-text>
                   <v-card-text class="text-right">
-                    <router-link tag="a" to="/list-one/thong-tin-ban-than/cap-nhat-thong-tin/1">Cập nhật thông tin bản thân</router-link>
+                    <router-link tag="a" :to="'/truong-phong/'+  $route.params.idEmpl + '/thong-tin-ban-than/cap-nhat-thong-tin'">Cập nhật thông tin bản thân</router-link>
                   </v-card-text>
                 </v-col>
               </v-row>
