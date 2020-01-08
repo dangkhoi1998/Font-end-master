@@ -12,7 +12,7 @@ export function PostCommentNhanvien (item) {
 
 export function PostCommentCohoi (item) {
     return request({
-        url: `admin/cohohoi/comment/`,
+        url: `truongphong/congviec/10/comment`,
         method: 'post',
         data: (item)
     })

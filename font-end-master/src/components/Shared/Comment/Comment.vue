@@ -87,7 +87,6 @@ export default {
   methods: {
     SaveCommnet () {
       this.comment.idEmpl = this.idNhanvien
-      console.log('ddddđ', this.comment)
       this.postComment(this.comment)
       .then(response => {
         console.log(response)
