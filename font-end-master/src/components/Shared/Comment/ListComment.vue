@@ -82,10 +82,10 @@ export default {
     },
 
     Delete (item) {
-      this.deleteComment(item['idCommente'])
+      this.deleteComment(item['idCom'])
         .then(response => {
           for (var i = 0; i < this.listComment.length; i++) {
-            if (this.listComment[i].idCommente === item['idCommente']) {
+            if (this.listComment[i].idCom === item['idCom']) {
               this.listComment.splice(i, 1)
               this.listComment[this.listComment.length - 1]
             }
