@@ -36,6 +36,13 @@ export function DeleteCommentNhanvien (item) {
   })
 }
 
+export function DeleteCommentCohoi (item) {
+  return request({
+    method: 'delete',
+    url: `admin/cohoi/comment/${item}`,
+  })
+}
+
 export function DeleteOpportunity (item) {
   return request({
     method: 'delete',

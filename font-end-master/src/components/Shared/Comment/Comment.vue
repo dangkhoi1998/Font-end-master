@@ -6,7 +6,6 @@
       v-model="form">
         <v-row>
           <v-col cols="12" class="my-0 py-0">
-            ddddddd{{text}}
             <v-textarea
               v-model="comment.note"
               outlined
@@ -24,7 +23,7 @@
 
           <v-col cols="12" sm="6" class="my-0 py-0">
             <v-combobox
-              v-model="comment.contactTime"
+              v-model="comment.appointmentTime"
               :items="contact_time"
               outlined dense
               label="Thời gian hẹn"
@@ -81,13 +80,15 @@ export default {
   data: () => ({
     form: false,
     comment: {
-      idEmpl: ''
+      idEmpl: '',
+      idOpportunity: ''
     },
     text: ''
   }),
   methods: {
     SaveCommnet () {
       this.comment.idEmpl = this.idNhanvien
+      this.comment.idOpportunity = this.idNhanvien
       this.postComment(this.comment)
       .then(response => {
         console.log(response)
@@ -99,7 +100,6 @@ export default {
       this.comment = {}
     },
     EditCommnet () {
-      console.log('1111', this.comment)
       this.$emit('Edit', this.comment)
     }
   },
@@ -118,7 +118,7 @@ export default {
       default: {}
     },
     idNhanvien: {
-      type: [Object, Array],
+      type: Number,
       default: {}
     }
   },
