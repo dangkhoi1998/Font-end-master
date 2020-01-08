@@ -44,7 +44,7 @@
                     </v-list-item-title>
                   </v-list-item>
 
-                  <v-list-item @click="Delete(item)">
+                  <v-list-item @click="Delete(item.idCommente)">
                     <v-list-item-title>
                       <v-icon color="">mdi-delete-circle</v-icon> Xóa ...
                     </v-list-item-title>
@@ -62,7 +62,9 @@
 </template>
 
 <script>
-import { getComment, DeleteComment } from  '../../../api/Comment/main'
+import { getComment} from  '../../../api/Comment/main'
+import { DeleteCommentNhanvien } from '../../../api/deleteApi/deleteAdmin'
+import axios from 'axios'
 export default {
   name: 'list-comment',
   data: () => ({
@@ -79,14 +81,14 @@ export default {
     },
 
     Delete (item) {
-      DeleteComment(item)
+      const index = this.items.indexOf(item)
+      confirm('Are you sure you want to delete this item?') && this.items.splice(index, 1)
+      DeleteCommentNhanvien(item)
         .then(response => {
         })
         .catch(function (error) {
           console.log(error)
         })
-      const index = this.items.indexOf(item)
-      this.items.splice(index, 1)
     },
 
     EditItem (val) {
@@ -95,7 +97,6 @@ export default {
   },
   watch: {
     commentAdd (val) {
-      console.log('22', val)
       const indexxx = this.listComment.findIndex(item => item.note === val.note)
       if (indexxx < 0) {
         this.listComment.push(val)
@@ -111,7 +112,7 @@ export default {
       default: {}
     },
     listComment: {
-      type: Object,
+      type: [Object, Array],
       default: {}
     }
   }

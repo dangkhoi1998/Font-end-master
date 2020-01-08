@@ -24,7 +24,7 @@
 <script>
 import Material from "vuetify/es5/util/colors"
 import CircleStatistic from "./CircleStatistic"
-import { getChot, getHengoilai, getChuachot } from '../../../api/GetApi/getApiAdmin'
+import { getChot, getHengoilai, getChuachot, getKhongconhucau } from '../../../api/GetApi/getApiAdmin'
 export default {
   components: {
     CircleStatistic,
@@ -75,15 +75,15 @@ export default {
       },
       {
         subheading: "Không có nhu cầu",
-        headline: "100%",
-        caption: "issues fixed.",
-        percent: 100,
+        headline: '',
+        caption: " Không có nhu cầu.",
+        percent: '',
         icon: {
           label: "bug_report",
           color: "primary"
         },
         linear: {
-          value: 100,
+          value: '',
           color: "error"
         }
       }
@@ -95,6 +95,7 @@ export default {
     this.listChot()
     this.listhengoilai()
     this.listchuachot()
+    this.listKhongconhucau()
   },
   methods: {
     listChot () {
@@ -124,6 +125,16 @@ export default {
           this.trending[2]['linear']['value'] = response.data.length
           this.trending[2]['percent'] = response.data.length
           this.trending[2]['headline'] = response.data.length
+        }
+      })
+    },
+    listKhongconhucau  () {
+      getKhongconhucau ()
+      .then (response => {
+        for (const i in this.trending) {
+          this.trending[3]['linear']['value'] = response.data.length
+          this.trending[3]['percent'] = response.data.length
+          this.trending[3]['headline'] = response.data.length
         }
       })
     }

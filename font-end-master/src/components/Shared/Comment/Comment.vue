@@ -6,6 +6,7 @@
       v-model="form">
         <v-row>
           <v-col cols="12" class="my-0 py-0">
+            ddddddd{{text}}
             <v-textarea
               v-model="comment.note"
               outlined
@@ -18,12 +19,12 @@
           </v-col>
 
           <v-col cols="12" sm="6" class="my-0 py-0">
-            <datetime-picker :textdense="dense = 'dense' " :lableName ="lable = 'Ngày hẹn'" @date="comment.appointment_time=$event"></datetime-picker>
+            <datetime-picker :textdense="dense = 'dense' " :lableName ="lable = 'Ngày hẹn'" @date="comment.contactTime=$event"></datetime-picker>
           </v-col>
 
           <v-col cols="12" sm="6" class="my-0 py-0">
             <v-combobox
-              v-model="comment.contact_time"
+              v-model="comment.contactTime"
               :items="contact_time"
               outlined dense
               label="Thời gian hẹn"
@@ -64,8 +65,8 @@
           </v-col>
 
           <v-col cols="12" sm="6" class="my-0 py-0">
-            <v-btn :disabled="!form" color="primary"  @click="SaveCommnet()">Lưu lại</v-btn>
-            <v-btn :disabled="!form" color="primary"  @click="EditCommnet()">Sửa</v-btn>
+            <v-btn :disabled="!form" color="primary" style="width: 100%" @click="SaveCommnet()">Lưu lại</v-btn>
+            <!-- <v-btn :disabled="!form" color="primary"  @click="EditCommnet()">Sửa</v-btn> -->
           </v-col>
         </v-row>
       </v-form>
@@ -74,17 +75,22 @@
 </template>
 
 <script>
-import { PostComment } from '../../../api/Comment/main'
+import axios from 'axios'
 export default {
   name: 'app-comment',
   data: () => ({
     form: false,
-    comment: {},
+    comment: {
+      idEmpl: ''
+    },
+    text: ''
   }),
   methods: {
     SaveCommnet () {
-      PostComment(this.comment)
+      this.comment.idEmpl = this.idNhanvien
+      this.postComment(this.comment)
       .then(response => {
+        console.log(response)
       })
       .catch(function (error) {
         console.log(error)
@@ -100,17 +106,28 @@ export default {
   computed: {
     contact_time () {
       return this.$store.state.contact_time
-    }
+    },
   },
   props: {
     editCommet: {
       type: Object,
       default: {}
     },
+    postComment: {
+      type: Function,
+      default: {}
+    },
+    idNhanvien: {
+      type: [Object, Array],
+      default: {}
+    }
   },
   watch: {
     editCommet (val) {
       this.comment = {... val}
+    },
+    idNhanvien (val) {
+      this.comment.idNhanvien = val
     }
   }
 }

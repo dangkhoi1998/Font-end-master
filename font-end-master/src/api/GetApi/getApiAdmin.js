@@ -21,6 +21,13 @@ export function getChuachot  () {
   })
 }
 
+export function getKhongconhucau  () {
+  return request({
+    url: 'admin/bantin/trangthai/konhucau',
+    method: 'get',
+  })
+}
+
 export function getDoanhsonhanvienthang () {
   return request({
     url: 'admin/bantin/doanhsonhanvienthang',

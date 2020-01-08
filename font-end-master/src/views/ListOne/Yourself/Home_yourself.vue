@@ -17,10 +17,8 @@ export default {
   },
   methods: {
     listApi () {
-      console.log('sssssssssss', this.$route.params.idEmpl)
       getThongtintaikhoan(this.$route.params.idEmpl)
         .then(response => {
-          console.log('dddddđ', response.data)
           this.items = response.data
         })
     }

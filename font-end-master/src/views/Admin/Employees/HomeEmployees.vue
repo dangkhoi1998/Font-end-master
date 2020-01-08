@@ -53,8 +53,7 @@
 
 <script>
   import Employees from '../../../components/Admin/table/Employees'
-  import { getNhanvien, updateEmployeeApi } from '../../../api/GetApi/getApiAdmin'
-  import { getDepartmentApi } from '../../../api/getApi'
+  import { getNhanvien, updateEmployeeApi, getPhongban } from '../../../api/GetApi/getApiAdmin'
   import { loading } from '../../../mixins/loading.mixin'
   export default {
     mixins: [loading],
@@ -74,7 +73,7 @@
         stt: ['false', 'true'],
         items: ['truong phong', 'nhan vien'],
         department_name: [],
-        idDepartment: ['1', '2', '3'],
+        idDepartment: [],
         headers: [
           { text: 'Họ và Tên', align: 'left', value: 'nameEmpl' },
           { text: 'Số điện thoại', align: 'left', value: 'phoneNum' },
@@ -97,10 +96,10 @@
     methods: {
       getItem () {
         this.isLoading = true
-        getDepartmentApi()
+        getPhongban()
           .then(response => {
             for (const i in response.data) {
-              this.department_name.push(response.data[i]['department_name'])
+              this.idDepartment.push(response.data[i]['idDepartment'])
             }
           })
           .finally(() => {

@@ -62,6 +62,8 @@
                 <app-comment
                 @commentAdd="commentAdd=$event"
                 :editCommet="editCommet"
+                :post-comment="PostCommentNhanvien"
+                :id-nhanvien="item.idEmpl"
                 @Edit="editCommet=$event"></app-comment>
               </v-col>
           
@@ -76,7 +78,7 @@
         </template>
 
         <template v-slot:item.iddepartment="{item}">
-          {{item.idDepartment.departmentName}}
+          {{item.id_department}}
         </template>
 
         <template v-slot:item.stt="{item}">
@@ -178,7 +180,7 @@
   </transition>
 </template>
 <script>
-  import { PostEmployee } from '../../../api/PostApi/PostAdmin'
+  import { PostEmployee, PostCommentNhanvien } from '../../../api/PostApi/PostAdmin'
   import { UpdateNhanvien } from '../../../api/updateApi/updateAdmin'
   import { DeleteNhanvien } from '../../../api/deleteApi/deleteAdmin'
   import { getComment } from  '../../../api/GetApi/getApiAdmin'
@@ -187,6 +189,7 @@
     data () {
       return {
         expanded: [],
+        PostCommentNhanvien,
         form: true,
         search: '',
         singleExpand: false,
@@ -231,7 +234,11 @@
       getList(){
         this.listApi()
           .then(response=>{
+            //console.log('Nhân viên', response.data)
             this.desserts = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
           })
       },
 
