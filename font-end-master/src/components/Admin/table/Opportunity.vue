@@ -108,12 +108,16 @@
                 <v-col cols="12" sm="5" class="my-0 py-0">
                   <app-comment
                   @commentAdd="commentAdd=$event"
-                  :editCommet="editCommet"></app-comment>
+                  :editCommet="editCommet"
+                  :post-comment="PostCommentCohoi"
+                  :id-nhanvien="item.idOpportunity"
+                  ></app-comment>
                 </v-col>
                 <v-col cols="12" sm="7">
                   <list-comment
                   :commentAdd="commentAdd"
                   :listComment="item.commCollection"
+                  :delete-comment="DeleteCommentCohoi"
                   @editCommet="editCommet=$event"></list-comment>
                 </v-col>
               </v-row>
@@ -206,13 +210,15 @@
   </transition>
 </template>
 <script>
-  import { PostOpportunityApi } from '../../../api/PostApi/PostAdmin'
+  import { PostOpportunityApi, PostCommentCohoi } from '../../../api/PostApi/PostAdmin'
   import { UpdateCohoi } from '../../../api/updateApi/updateAdmin'
-  import { DeleteCohoi } from '../../../api/deleteApi/deleteAdmin'
+  import { DeleteCohoi, DeleteCommentCohoi } from '../../../api/deleteApi/deleteAdmin'
   export default {
     data () {
       return {
         expanded: [],
+        PostCommentCohoi,
+        DeleteCommentCohoi,
         search: '',
         status: ['Shopee'],
         singleExpand: false,

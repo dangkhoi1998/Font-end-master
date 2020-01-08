@@ -34,6 +34,14 @@ export function PostCommentNhanvien (item) {
   })
 }
 
+export function PostCommentCohoi (item) {
+  return request({
+    url: 'admin/cohoi/comment/',
+    method: 'post',
+    data: (item)
+  })
+}
+
 export function PostWorkToDo (item) {
   return request({
     method: 'post',

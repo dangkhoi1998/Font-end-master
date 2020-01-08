@@ -71,6 +71,7 @@
                 <list-comment
                 :commentAdd="commentAdd"
                 :listComment="item.commCollection"
+                :delete-comment="DeleteCommentNhanvien"
                 @editCommet="editCommet=$event"></list-comment>
               </v-col>
             </v-row>
@@ -181,13 +182,15 @@
 <script>
   import { PostEmployee, PostCommentNhanvien } from '../../../api/PostApi/PostAdmin'
   import { UpdateNhanvien } from '../../../api/updateApi/updateAdmin'
-  import { DeleteNhanvien } from '../../../api/deleteApi/deleteAdmin'
+  import { DeleteNhanvien, DeleteCommentNhanvien } from '../../../api/deleteApi/deleteAdmin'
+  import { getComment } from  '../../../api/GetApi/getApiAdmin'
   import axios from 'axios'
   export default {
     data () {
       return {
         expanded: [],
         PostCommentNhanvien,
+        DeleteCommentNhanvien,
         form: true,
         search: '',
         singleExpand: false,

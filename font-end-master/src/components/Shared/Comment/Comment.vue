@@ -80,13 +80,15 @@ export default {
   data: () => ({
     form: false,
     comment: {
-      idEmpl: ''
+      idEmpl: '',
+      idOpportunity: ''
     },
     text: ''
   }),
   methods: {
     SaveCommnet () {
       this.comment.idEmpl = this.idNhanvien
+      this.comment.idOpportunity = this.idNhanvien
       this.postComment(this.comment)
       .then(response => {
         console.log(response)
@@ -98,7 +100,6 @@ export default {
       this.comment = {}
     },
     EditCommnet () {
-      console.log('1111', this.comment)
       this.$emit('Edit', this.comment)
     }
   },
@@ -117,7 +118,7 @@ export default {
       default: {}
     },
     idNhanvien: {
-      type: [Object, Array],
+      type: Number,
       default: {}
     }
   },

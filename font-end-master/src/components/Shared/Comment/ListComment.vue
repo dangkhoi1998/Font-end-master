@@ -44,11 +44,12 @@
                     </v-list-item-title>
                   </v-list-item>
 
-                  <v-list-item @click="Delete(item.idCommente)">
+                  <v-list-item @click="Delete(item)">
                     <v-list-item-title>
                       <v-icon color="">mdi-delete-circle</v-icon> Xóa ...
                     </v-list-item-title>
                   </v-list-item>
+                  
 
                 </v-list>
               </v-menu>
@@ -81,10 +82,14 @@ export default {
     },
 
     Delete (item) {
-      const index = this.items.indexOf(item)
-      confirm('Are you sure you want to delete this item?') && this.items.splice(index, 1)
-      DeleteCommentNhanvien(item)
+      this.deleteComment(item['idCommente'])
         .then(response => {
+          for (var i = 0; i < this.listComment.length; i++) {
+            if (this.listComment[i].idCommente === item['idCommente']) {
+              this.listComment.splice(i, 1)
+              this.listComment[this.listComment.length - 1]
+            }
+          }
         })
         .catch(function (error) {
           console.log(error)
@@ -96,6 +101,9 @@ export default {
     }
   },
   watch: {
+    selectNotification (notification) {
+      this.$emit('selectNotification', notification)
+    },
     commentAdd (val) {
       const indexxx = this.listComment.findIndex(item => item.note === val.note)
       if (indexxx < 0) {
@@ -113,6 +121,10 @@ export default {
     },
     listComment: {
       type: [Object, Array],
+      default: {}
+    },
+    deleteComment: {
+      type: Function,
       default: {}
     }
   }

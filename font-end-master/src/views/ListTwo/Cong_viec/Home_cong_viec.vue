@@ -10,7 +10,6 @@
 
 <script>
 import { getTaskApi } from '../../../api/ListTwo/getApi'
-import { UpdateOpportunity } from '../../../api/ListOne/updateApi'
 import table from '../../../components/List/Table'
 export default {
   data: () => ({
