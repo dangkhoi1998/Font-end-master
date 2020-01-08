@@ -28,47 +28,84 @@
           class="elevation-1 mt-5"
         >
           <template v-slot:expanded-item="{item}">
-            <td :colspan="12">
-              <v-row row class="my-0 py-0">
-                <v-col cols="12" sm="5" class="my-0 py-0">
-                  <app-comment
-                  @commentAdd="commentAdd=$event"
-                  :editCommet="editCommet"></app-comment>
-                </v-col>
-                <v-col cols="12" sm="7">
-                  <list-comment
-                  :commentAdd="commentAdd"
-                  @editCommet="editCommet=$event"></list-comment>
-                </v-col>
-              </v-row>
-            </td>
-          </template>
-          <template v-slot:item.stts="{item}">
-            <v-icon size="16" :color="getColorstt(item.stt)">fiber_manual_record</v-icon>{{item.stt}}
-          </template>
-          <template v-slot:item.actions="{item}">
-            <v-icon small class="mr-2" @click="editItem(item)" color="blue" > edit  </v-icon>
-            <v-icon color="red" small @click="deleteItem(item)" > delete </v-icon>
-          </template>
-        </v-data-table>
-        <!-- xóa -->
-        <!--  -->
-        <v-snackbar v-model="snackbar1" color="green" top dark >
-          <v-icon color="white" class="mr-3">mdi-bell-plus</v-icon>
-          <div>{{text}}</div>
-          <v-btn icon  @click="snackbar1 = false" >
-            <v-icon>mdi-close-circle</v-icon>
-          </v-btn>
-        </v-snackbar>
+          <td :colspan="10">
+            <v-row row class="my-0 py-0">
+              <v-col cols="12" sm="5" class="my-0 py-0">
+                <app-comment
+                @commentAdd="commentAdd=$event"
+                :editCommet="editCommet"
+                :post-comment="PostCommentCohoi"
+                :id-nhanvien="item.idEmpl"
+                @Edit="editCommet=$event"></app-comment>
+              </v-col>
+          
+              <v-col cols="12" sm="7">
+                <list-comment
+                :commentAdd="commentAdd"
+                :listComment="item.commCollection"
+                @editCommet="editCommet=$event"></list-comment>
+              </v-col>
+            </v-row>
+          </td>
+        </template>
+        <template v-slot:item.iddepartment="{item}">
+          {{item.id_department}}
+        </template>
+
+        <template v-slot:item.stt="{item}">
+          <v-icon size="16" :color="getColorstt(item.stt)">fiber_manual_record</v-icon>{{item.stt}}
+        </template>
+        <template v-slot:item.actions="{item}">
+          <v-row>
+            <v-icon small class="mr-2" @click="editItem(item)" > edit  </v-icon>
+            <v-icon small @click="deleteItem(item)" > delete </v-icon>
+          </v-row>
+        </template>
+      </v-data-table>
+      <v-dialog v-model="dialog1" persistent width="600">
+        <v-card>
+          <v-card-title class="headline grey lighten-2" primary-title > Privacy Policy</v-card-title>
+          
+          <v-card-text>
+            {{item}}
+          </v-card-text>
+
+          <v-divi der></v-divi>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" flat @click="XoaItem()"> I accept</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      <!-- xóa -->
+      <!--  -->
+      <v-snackbar v-model="snackbar1" color="green" top dark >
+        <v-icon color="white" class="mr-3">mdi-bell-plus</v-icon>
+        <div>{{text}}</div>
+        <v-btn icon  @click="snackbar1 = false" >
+          <v-icon >mdi-close-circle</v-icon>
+        </v-btn>
+      </v-snackbar>
     </material-card>
   </transition>
 </template>
 <script>
   import { getCongviec } from '../../../api/ListOne/getApi'
+  import { PostCommentCohoi } from "../../../api/ListOne/postApi"
   export default {
     data: () => ({
       getCongviec,
+      PostCommentCohoi,
       search: '',
+      dialog2: false,
+      list: {},
+      dialog1: false,
+      snackbar1: false,
+      text: '',
+      commentAdd: {},
+      item:{},
+      editCommet: {},
       stt: ['Đã chốt', 'Đã đăng ký', 'Liên hệ sau'],
       headers: [
         { text: 'Họ và Tên', align: 'left', sortable: false, value: 'cusName' },
@@ -91,9 +128,27 @@
       getItem () {
         getCongviec(this.$route.params.idEmpl)
           .then(response => {
+            console.log('dddđ',response)
             this.desserts = response.data
           })
-      }
+      },
+      getColorstt (stt) {
+        if (stt === 'Đang hoạt động') return 'green'
+        else if (stt === 'Tạm ngừng hoạt động') return 'orange'
+        else if (stt === 'Chờ xét duyệt') return 'blue'
+        else return 'red'
+      },
+
+      getColorComments (color) {
+        if (color === 'mdi-email') return 'green'
+        else if (color === 'mdi-phone') return 'orange'
+        else if (color === 'mdi-bell') return 'red'
+        else if (color === 'mdi-account-multiple') return 'blue'
+        else return 'red'
+      },
+      snackbar () {
+        this.snackbar1 = true
+      },
     }
   }
 </script>

@@ -17,7 +17,7 @@ export function DeleteKhachhang (item) {
 export function DeleteNhanvien (item) {
   return request({
     method: 'delete',
-    url: `admin/nhanvien//${item.idEmpl}`,
+    url: `admin/nhanvien/${item.idEmpl}`,
   })
 }
 
@@ -25,7 +25,14 @@ export function DeleteNhanvien (item) {
 export function DeleteCohoi (item) {
   return request({
     method: 'delete',
-    url: `admin/cohoi//${item.idOpportunity}`,
+    url: `admin/cohoi/${item.idOpportunity}`,
+  })
+}
+
+export function DeleteCommentNhanvien (item) {
+  return request({
+    method: 'delete',
+    url: `admin/nhanvien/comment/${item}`,
   })
 }
 

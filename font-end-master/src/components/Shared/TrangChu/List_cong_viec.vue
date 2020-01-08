@@ -57,23 +57,24 @@
   </transition>
 </template>
 <script>
-import { getCongvecNV } from '../../../api/ListTwo/getApi'
 export default {
   data () {
     return {
-      items: {}
+      items: [],
+    }
+  },
+  props:{
+    getApi: {
+      require: true,
+      type: Function,
+      default: null
     }
   },
   created () {
-    this.getList()
-  },
-  methods: {
-    getList () {
-      getCongvecNV (this.$route.params.idEmpl)
-        .then(response=>{
-          this.items = response.data
-        })
-    }
+    this.getApi(this.$route.params.idEmpl)
+    .then(response => {
+      this.items = response.data
+    })
   }
 }
 </script>

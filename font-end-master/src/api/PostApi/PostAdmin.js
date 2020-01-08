@@ -26,6 +26,14 @@ export function PostKhachhang (item) {
   })
 }
 
+export function PostCommentNhanvien (item) {
+  return request({
+    url: 'admin/nhanvien/comment/',
+    method: 'post',
+    data: (item)
+  })
+}
+
 export function PostWorkToDo (item) {
   return request({
     method: 'post',

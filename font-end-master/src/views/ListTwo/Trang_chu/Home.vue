@@ -6,7 +6,8 @@
     :getApiThang="getDSNamApi"></so-luong-cong-viec>
     <v-row>
       <v-col cols="12" lg="8">
-        <list-cong-viec></list-cong-viec> 
+        <list-cong-viec
+        :getApi="getCongvecNV"></list-cong-viec>
       </v-col>
       <v-col cols="12" sm="4">
         <trang-thai
@@ -27,11 +28,12 @@
   import { PostWorkToDo } from '../../../api/PostApi/PostAdmin'
   import { DeleteWorkToDoApi } from '../../../api/deleteApi/deleteAdmin'
   import { UpdatetWorkToDo } from '../../../api/updateApi/updateAdmin'
-  import { getDSNgayApi,getDSThangApi, getDSNamApi } from '../../../api/ListTwo/getApi'
+  import { getDSNgayApi,getDSThangApi, getDSNamApi, getCongvecNV } from '../../../api/ListTwo/getApi'
 export default {
   data: () => ({
     getworToDokApi,
     PostWorkToDo,
+    getCongvecNV,
     DeleteWorkToDoApi,
     UpdatetWorkToDo,
     getworkApi,

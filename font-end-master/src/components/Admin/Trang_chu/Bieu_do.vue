@@ -8,7 +8,7 @@
           color="info"
           type="Line"
         >
-          <h4 class="title font-weight-light">Doanh số theo tuần</h4>
+          <h4 class="title font-weight-light">Doanh số theo ngày</h4>
         </material-chart-card>
       </v-col>
 

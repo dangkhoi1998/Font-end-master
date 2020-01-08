@@ -5,7 +5,7 @@
     enter-active-class="animated fadeInLeftBig ">
     <material-card class="nhanvien" color="orange" text>
       <template v-slot:header>
-        <h4 class="ml-4" >Quản lý công việc</h4>
+        <h4 class="ml-4" >Quản lý thành viên</h4>
         <v-col cols="12" sm="4"></v-col>
         <v-text-field
           v-model="search"
@@ -28,13 +28,17 @@
           class="elevation-1 mt-5"
         >
           <template v-slot:expanded-item="{item}">
-            <td :colspan="14">
+            <td :colspan="10">
               <v-row row class="my-0 py-0">
                 <v-col cols="12" sm="5" class="my-0 py-0">
                   <app-comment
                   @commentAdd="commentAdd=$event"
-                  :editCommet="editCommet"></app-comment>
+                  :editCommet="editCommet"
+                  :post-comment="PostCommentNhanvien"
+                  :id-nhanvien="item.idEmpl"
+                  @Edit="editCommet=$event"></app-comment>
                 </v-col>
+            
                 <v-col cols="12" sm="7">
                   <list-comment
                   :commentAdd="commentAdd"
@@ -97,11 +101,19 @@
   </transition>
 </template>
 <script>
+import { PostCommentNhanvien } from "../../api/ListOne/postApi"
+
   export default {
     data: () => ({
       search: '',
       stt: ['Đã chốt', 'Đã đăng ký', 'Liên hệ sau'],
       desserts: [],
+      PostCommentNhanvien,
+      text: '',
+      commentAdd: {},
+      dialog1: false,
+      snackbar1: false,
+      editCommet: {},
     }),
     created () {
       this.getItem()
@@ -128,6 +140,9 @@
         this.getApi(this.$route.params.idEmpl)
           .then(response => {
             this.desserts = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
           })
       },
       editStt (item) {

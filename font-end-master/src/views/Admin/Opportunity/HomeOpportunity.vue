@@ -64,7 +64,7 @@
         status: [],
         id_empl: [],
         delivery: ['Giao hàng tiết kiệm', 'Giao hàng nhanh'],
-        stt: ['chot', 'chua chot', 'hen goi lai'],
+        stt: ['Chốt', 'Chưa chốt', 'Hẹn gọi lại', 'Không nhu cầu'],
         headers: [
           { text: 'Họ và Tên', align: 'left', sortable: false, value: 'cusName' },
           { text: 'Số điện thoại', align: 'left', value: 'phoneNum' },
@@ -73,7 +73,6 @@
           { text: 'Số lượng', align: 'left', value: 'amountt' },
           { text: 'Giá', align: 'left', value: 'price' },
           { text: 'Ngày mua', align: 'left', value: 'dateOfPurchase' },
-          { text: 'Tên nhân viên', align: 'left', value: 'id_empl' }, 
           { text: 'Giao vận', align: 'left', value: 'delivery' },
           { text: 'Nguồn', align: 'left', value: 'sources' },
           { text: 'Trạng thái', align: 'left', value: 'stt' },

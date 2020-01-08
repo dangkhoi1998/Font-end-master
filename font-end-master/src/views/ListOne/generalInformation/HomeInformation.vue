@@ -9,31 +9,23 @@
         <bieu-do :barChartData="barChartData" :barChartOptions="barChartOptions" ></bieu-do>
 
         <list-cong-viec
-        :list-api="getListCV"></list-cong-viec> 
+        :getApi="getListCV"></list-cong-viec> 
       </v-col>
       <v-col cols="12" sm="4">
         <trang-thai
         :locationData="locationData"></trang-thai>
-
         <app-dsnv
         :text="text"
         :headers="headers"
         :get-api="getDSNVien"></app-dsnv>
 
-        <viec-can-lam
-        :list-api="getworToDokApi"
-        :post-api="PostWorkToDo"
-        :put-api="UpdatetWorkToDo"
-        :delete-api="DeleteWorkToDoApi"></viec-can-lam>
+        <viec-can-lam></viec-can-lam>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-  import { PostWorkToDo } from '../../../api/PostApi/PostAdmin'
-  import { DeleteWorkToDoApi } from '../../../api/deleteApi/deleteAdmin'
-  import { UpdatetWorkToDo } from '../../../api/updateApi/updateAdmin'
   import { getDSNgayApi,getDSThangApi, getDSNamApi, getDSNVien,getListCV } from '../../../api/ListOne/getApi'
   export default {
     data () {

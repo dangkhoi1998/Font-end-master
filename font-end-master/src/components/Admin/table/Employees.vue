@@ -62,6 +62,8 @@
                 <app-comment
                 @commentAdd="commentAdd=$event"
                 :editCommet="editCommet"
+                :post-comment="PostCommentNhanvien"
+                :id-nhanvien="item.idEmpl"
                 @Edit="editCommet=$event"></app-comment>
               </v-col>
           
@@ -74,8 +76,9 @@
             </v-row>
           </td>
         </template>
-
-        
+        <template v-slot:item.iddepartment="{item}">
+          {{item.id_department}}
+        </template>
 
         <template v-slot:item.stt="{item}">
           <v-icon size="16" :color="getColorstt(item.stt)">fiber_manual_record</v-icon>{{item.stt}}
@@ -176,15 +179,15 @@
   </transition>
 </template>
 <script>
-  import { PostEmployee } from '../../../api/PostApi/PostAdmin'
+  import { PostEmployee, PostCommentNhanvien } from '../../../api/PostApi/PostAdmin'
   import { UpdateNhanvien } from '../../../api/updateApi/updateAdmin'
   import { DeleteNhanvien } from '../../../api/deleteApi/deleteAdmin'
-  import { getComment } from  '../../../api/GetApi/getApiAdmin'
   import axios from 'axios'
   export default {
     data () {
       return {
         expanded: [],
+        PostCommentNhanvien,
         form: true,
         search: '',
         singleExpand: false,
@@ -219,17 +222,14 @@
       this.getList()
     },
     methods: {
-      LisComment () {
-        getComment()
-          .then(response=> {
-            this.list = response.data
-          })
-      },
-      
       getList(){
         this.listApi()
           .then(response=>{
+            // console.log('Nhân viên', response.data)
             this.desserts = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
           })
       },
 

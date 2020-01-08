@@ -14,6 +14,17 @@ export default {
     getThongtintaikhoan,
     items: {},
   }),
+  created () {
+    this.listApi()
+  },
+  methods: {
+    listApi () {
+      getThongtintaikhoan(this.$route.params.idEmpl)
+        .then(response => {
+          this.items = response.data
+        })
+    }
+  },
   components: {
     appTimeline: Timeline,
   },

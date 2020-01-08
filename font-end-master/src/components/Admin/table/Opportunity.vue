@@ -8,14 +8,16 @@
         </template>
         <v-card-title class="mb-0 pb-0">
           <v-layout row class="my-0 py-0" >
+            {{selected}}
             <v-btn class="ma-2" tile depressed @click="addItem" outlined color="red">
               <v-icon left>mdi-account-plus-outline</v-icon>THÊM MỚI CƠ HỘ 
             </v-btn>
             <v-btn class="ma-2" tile depressed :to="'/admin/'+  $route.params.idEmpl + '/co-hoi/nhap-file'" style="text-decoration:none" outlined color="blue">
               <v-icon left>mdi-account-plus-outline</v-icon>Import excel
             </v-btn>
-           <div>
-            </div>
+            <v-btn class="ma-2" @click="checkBtn()" tile depressed style="text-decoration:none" outlined color="pink">
+              <v-icon left>mdi-account-plus-outline</v-icon>{{text1}}
+            </v-btn>
             <v-col class="shrink" style="margin-top:-13px">
               <v-btn @click="expand2 = !expand2" class="ma-2" tile outlined color="success">
                 <v-icon left>mdi-pencil</v-icon>TỔNG QUAN CƠ HỘI
@@ -90,6 +92,7 @@
             </transition>
           </v-layout>
         </v-card-title>
+        <!-- ----------------------------------------------------------------------------------------------------- -->
         <v-data-table
           :headers="headers"
           :items="desserts"
@@ -116,12 +119,18 @@
               </v-row>
             </td>
           </template>
+          
           <template v-slot:item.stts="{item}">
             <v-icon size="16" :color="getColorstt(item.stt)">fiber_manual_record</v-icon>{{item.stt}}
           </template>
           <template v-slot:item.actions="{item}">
-            <v-icon small class="mr-2" @click="editItem(item)" color="blue" > edit  </v-icon>
-            <v-icon small @click="deleteItem(item)" color="red"> delete </v-icon>
+            <v-row v-if="check">
+              <v-icon  small class="mr-2" @click="editItem(item)" color="blue" > edit  </v-icon>
+              <v-icon  small @click="deleteItem(item)" color="red"> delete </v-icon>
+            </v-row>
+            <v-row v-else>
+              <v-checkbox v-model="selected"  class="mb-0  mb-0 pb-0 pb-0" :value="item"></v-checkbox>
+            </v-row>
           </template>
         </v-data-table>
         <v-dialog
@@ -208,6 +217,7 @@
         status: ['Shopee'],
         singleExpand: false,
         item: {},
+        check: false,
         comment: {},
         dialog: false,
         dialog1: false,
@@ -217,9 +227,11 @@
         addUpdate: true,
         snackbar1: false,
         text: '',
+        text1: 'Sửa/ xóa',
         form: false,
         commentAdd: {},
         isUpdating: false,
+        selected: [],
         editCommet: {},
       }
     },
@@ -242,6 +254,14 @@
       this.getList()
     },
     methods: {
+      checkBtn () {
+        this.check = ! this.check
+        if (this.check === false) {
+          this.text1 = 'Sửa/ xóa'
+        } else {
+          this.text1 = 'Giao công việc'
+        }
+      },
       getList(){
         this.listApi()
           .then(response=>{
