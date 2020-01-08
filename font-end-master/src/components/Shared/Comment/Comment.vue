@@ -12,7 +12,7 @@
               class="my-0 py-0"
               name="input-7-4"
               label="Comment"
-                :rules="[v => !!v || 'Thông tin bắt buộc ']"
+                :rules="[v => !!v || 'Thông tin bắt buộc1 ']"
               value=""
             ></v-textarea>
           </v-col>
